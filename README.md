@@ -30,15 +30,15 @@ For background have a look at the 2014 blog post [Label Whisperer](https://labs.
 
 ## Examples
 
-![](docs/images/label-whisperer-001.jpg)
+![](docs/images/label-whisperer-001-1280.jpg)
 
-![](docs/images/label-whisperer-002.jpg)
+![](docs/images/label-whisperer-002-1280.jpg)
 
-![](docs/images/label-whisperer-003.jpg)
+![](docs/images/label-whisperer-003-1280.jpg)
 
-![](docs/images/label-whisperer-004.jpg)
+![](docs/images/label-whisperer-004-1280.jpg)
 
-![](docs/images/label-whisperer-005.jpg)
+![](docs/images/label-whisperer-005-1280.jpg)
 
 ## See also
 
