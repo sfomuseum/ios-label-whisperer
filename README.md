@@ -30,17 +30,27 @@ For background have a look at the 2014 blog post [Label Whisperer](https://labs.
 
 ## Examples
 
+### Hand-drawn
+
 ![](docs/images/label-whisperer-001.jpg)
 
-![](docs/images/label-whisperer-002.jpg)
+### Cooper Hewitt
 
 _Things I'd forgotten about #1: We did not include accession numbers on the wall labels at Cooper Hewitt after the re-opening in 2014._
 
+![](docs/images/label-whisperer-002.jpg)
+
+### Cooper Hewitt (online)
+
 ![](docs/images/label-whisperer-003.jpg)
+
+### Cooper Hewitt (online, print)
+
+_Things I'd forgotten about #2: We made an print stylesheet for the experimental `/label` URL for every object page at Cooper Hewitt.
 
 ![](docs/images/label-whisperer-004.jpg)
 
-_Things I'd forgotten about #2: We made an print stylesheet for the experimental `/label` URL for every object page at Cooper Hewitt.
+### SFO Museum (online)
 
 ![](docs/images/label-whisperer-005.jpg)
 
