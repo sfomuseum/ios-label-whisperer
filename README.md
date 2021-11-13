@@ -46,7 +46,7 @@ _Things I'd forgotten about #1: We did not include accession numbers on the wall
 
 ### Cooper Hewitt (online, print)
 
-_Things I'd forgotten about #2: We made an print stylesheet for the experimental `/label` URL for every object page at Cooper Hewitt._
+_Things I'd forgotten about #2: We made a print stylesheet for the experimental `/label` URL for every object page at Cooper Hewitt._
 
 ![](docs/images/label-whisperer-004.jpg)
 
