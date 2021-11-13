@@ -12,7 +12,7 @@ It works enough to scan and extract text from a camera source and to print that 
 
 Next steps are:
 
-* Actually extract one or more accession numbers from a piece of text. This needs to be an abstract protocol since the rules for extracting identifiers will vary from museum to museum.
+* Actually extract one or more accession numbers from a piece of text. This needs to be an abstract protocol since the rules for extracting identifiers will vary from museum to museum. Related: The [sfomuseum/accession-numbers](https://github.com/sfomuseum/accession-numbers) repository.
 
 * Think about actions (or Protocols) for things to _do_ with an accession number. For example, calling an API to get more information about an object. Maybe that doesn't belong here and maybe this just needs to be a plain vanilla package library, or framework, that hides a bunch of boiler-plate code with "a button" that returns accession numbers.
 
@@ -56,6 +56,7 @@ _Things I'd forgotten about #2: We made a print stylesheet for the experimental 
 
 ## See also
 
+* https://github.com/sfomuseum/accession-numbers
 * https://labs.cooperhewitt.org/2014/label-whisperer/
 * https://github.com/cooperhewitt/label-whisperer
 * https://developer.apple.com/documentation/vision/structuring_recognized_text_on_a_document
