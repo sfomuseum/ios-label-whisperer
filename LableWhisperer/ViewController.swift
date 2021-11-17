@@ -8,6 +8,7 @@
 import UIKit
 import Vision
 import VisionKit
+import AccessionNumbers
 
 // This is pretty much still a straigh clone of
 // https://developer.apple.com/documentation/vision/structuring_recognized_text_on_a_document
@@ -22,10 +23,41 @@ class ViewController: UIViewController {
     // var resultsViewController: (UIViewController & RecognizedTextDataSource)?
     var textRecognitionRequest = VNRecognizeTextRequest()
     
+    var accession_numbers: AccessionNumbers!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-    
+        // START OF load data
+        
+        var candidates = [Organization]()
+        
+        if let url = Bundle.main.url(forResource: "sfomuseum", withExtension: "json") {
+
+        var data: Data
+        var org: Organization
+        
+        do {
+            data = try Data(contentsOf: url)
+        } catch (let error){
+            fatalError("Failed to load  from bundle, \(error).")
+        }
+        
+        let decoder = JSONDecoder()
+        
+        do {
+            org = try decoder.decode(Organization.self, from: data)
+        } catch (let error){
+            fatalError("Failed to load organization, \(error).")
+        }
+            
+            candidates.append(org)
+        }
+        
+        accession_numbers = AccessionNumbers(candidates: candidates)
+               
+        // END OF load data
+        
         textRecognitionRequest = VNRecognizeTextRequest(completionHandler: { (request, error) in
 
             if let results = request.results, !results.isEmpty {
@@ -71,7 +103,20 @@ class ViewController: UIViewController {
             transcript += candidate.string
             transcript += "\n"
         }
-        self.scanned_text?.text = transcript
+        
+        let rsp = self.accession_numbers.ExtractFromText(text: transcript)
+        var text = ""
+        
+        switch rsp {
+        case .failure(let error):
+            print("Failed to extract accession numbers from text, \(error).")
+        case .success(let results):
+            for n in results {
+                text += "\(n.accession_number) (\(n.organization))\n"
+            }
+        }
+        
+        self.scanned_text?.text = text // transcript
     }
 }
 

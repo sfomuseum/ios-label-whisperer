@@ -8,11 +8,48 @@ This is experimental work in progress. It is still just a barely modified clone 
 
 It works enough to scan and extract text from a camera source and to print that text to the screen, but that's all it does so far. There is no documentation to speak of. If you're not familiar with your way around an iOS project this may be too soon for you.
 
+### Also
+
+This project was accidentally named `LableWhisperer` in XCode. There are a bunch of things to figure out.
+
+## How does it work
+
+* At start up the application loads one or more accession number "definition" files. These are the JSON files in the `data` directory of the [accession-numbers](https://github.com/sfomuseum/accession-numbers) repository. At the moment there is exactly one definition file ([sfomuseum.json](https://github.com/sfomuseum/accession-numbers/blob/main/data/sfomuseum.json)) and it is hardcoded.
+
+* Given a `VNRecognizedTextObservation` instance the application builds a text string which is then passed to the `ExtractFromText` method (defined in the [swift-accession-numbers](https://github.com/sfomuseum/swift-accession-numbers) package). For example: 
+
+```
+    func addRecognizedText(recognizedText: [VNRecognizedTextObservation]) {
+
+        var transcript = ""
+        let maximumCandidates = 1
+        for observation in recognizedText {
+            guard let candidate = observation.topCandidates(maximumCandidates).first else { continue }
+            transcript += candidate.string
+            transcript += "\n"
+        }
+        
+        let rsp = self.accession_numbers.ExtractFromText(text: transcript)
+        var text = ""
+        
+        switch rsp {
+        case .failure(let error):
+            print("Failed to extract accession numbers from text, \(error).")
+        case .success(let results):
+            for n in results {
+                text += "\(n.accession_number) (\(n.organization))\n"
+            }
+        }
+        
+        self.scanned_text?.text = text
+    }
+```
+
 ## Next steps
 
 Next steps are:
 
-* Actually extract one or more accession numbers from a piece of text. This needs to be an abstract protocol since the rules for extracting identifiers will vary from museum to museum. Related: The [sfomuseum/accession-numbers](https://github.com/sfomuseum/accession-numbers) repository.
+* Decide how and where to store and load multiple accession number "definition" files. Maybe the best thing is to always import everything from the [sfomuseum/accession-numbers](https://github.com/sfomuseum/accession-numbers) repository and add a preferences window for enabling or disabling things. TBD.
 
 * Think about actions (or Protocols) for things to _do_ with an accession number. For example, calling an API to get more information about an object. Maybe that doesn't belong here and maybe this just needs to be a plain vanilla package library, or framework, that hides a bunch of boiler-plate code with "a button" that returns accession numbers.
 

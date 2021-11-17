@@ -15,6 +15,7 @@
 		4A7928A1273F286400C92087 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A79289F273F286400C92087 /* LaunchScreen.storyboard */; };
 		4A7928A9273F311E00C92087 /* RecognizedTextDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7928A8273F311E00C92087 /* RecognizedTextDataSource.swift */; };
 		4A8AC352274484F9002F4C7C /* AccessionNumbers in Frameworks */ = {isa = PBXBuildFile; productRef = 4A8AC351274484F9002F4C7C /* AccessionNumbers */; };
+		4A8AC354274487C2002F4C7C /* sfomuseum.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A8AC353274487C2002F4C7C /* sfomuseum.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		4A7928A0273F286400C92087 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4A7928A2273F286400C92087 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4A7928A8273F311E00C92087 /* RecognizedTextDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizedTextDataSource.swift; sourceTree = "<group>"; };
+		4A8AC353274487C2002F4C7C /* sfomuseum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sfomuseum.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 		4A792893273F286100C92087 /* LableWhisperer */ = {
 			isa = PBXGroup;
 			children = (
+				4A8AC353274487C2002F4C7C /* sfomuseum.json */,
 				4A792894273F286100C92087 /* AppDelegate.swift */,
 				4A792896273F286100C92087 /* SceneDelegate.swift */,
 				4A792898273F286100C92087 /* ViewController.swift */,
@@ -138,6 +141,7 @@
 			files = (
 				4A7928A1273F286400C92087 /* LaunchScreen.storyboard in Resources */,
 				4A79289E273F286400C92087 /* Assets.xcassets in Resources */,
+				4A8AC354274487C2002F4C7C /* sfomuseum.json in Resources */,
 				4A79289C273F286100C92087 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
