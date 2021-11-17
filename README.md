@@ -57,6 +57,7 @@ _Things I'd forgotten about #2: We made a print stylesheet for the experimental 
 ## See also
 
 * https://github.com/sfomuseum/accession-numbers
+* https://github.com/sfomuseum/swift-accession-numbers
 * https://labs.cooperhewitt.org/2014/label-whisperer/
 * https://github.com/cooperhewitt/label-whisperer
 * https://developer.apple.com/documentation/vision/structuring_recognized_text_on_a_document
