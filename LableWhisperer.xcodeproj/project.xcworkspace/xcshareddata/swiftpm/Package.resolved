@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "AccessionNumbers",
+        "repositoryURL": "https://github.com/sfomuseum/swift-accession-numbers",
+        "state": {
+          "branch": null,
+          "revision": "b5aa5c3e2a33975d6d0dd7839ea11e65a62b4ba2",
+          "version": "0.0.1"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
