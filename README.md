@@ -28,8 +28,11 @@ This project was accidentally named `LableWhisperer` in XCode. There are a bunch
             transcript += candidate.string
             transcript += "\n"
         }
-        
-        let rsp = self.accession_numbers.ExtractFromText(text: transcript)
+
+	// var defintions = [Definitions]()
+	// populate definitions here...
+	
+        let rsp = ExtractFromText(text: transcript, definitions: definitions)
         var text = ""
         
         switch rsp {
