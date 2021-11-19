@@ -22,20 +22,18 @@ class ViewController: UIViewController {
         
     // var resultsViewController: (UIViewController & RecognizedTextDataSource)?
     var textRecognitionRequest = VNRecognizeTextRequest()
-    
-    var accession_numbers: AccessionNumbers!
+        
+    var candidates = [Definition]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // START OF load data
         
-        var candidates = [Organization]()
-        
         if let url = Bundle.main.url(forResource: "sfomuseum", withExtension: "json") {
 
         var data: Data
-        var org: Organization
+        var def: Definition
         
         do {
             data = try Data(contentsOf: url)
@@ -46,16 +44,14 @@ class ViewController: UIViewController {
         let decoder = JSONDecoder()
         
         do {
-            org = try decoder.decode(Organization.self, from: data)
+            def = try decoder.decode(Definition.self, from: data)
         } catch (let error){
             fatalError("Failed to load organization, \(error).")
         }
             
-            candidates.append(org)
+            candidates.append(def)
         }
-        
-        accession_numbers = AccessionNumbers(candidates: candidates)
-               
+                       
         // END OF load data
         
         textRecognitionRequest = VNRecognizeTextRequest(completionHandler: { (request, error) in
@@ -104,7 +100,7 @@ class ViewController: UIViewController {
             transcript += "\n"
         }
         
-        let rsp = self.accession_numbers.ExtractFromText(text: transcript)
+        let rsp = ExtractFromText(text: transcript, definitions: self.candidates)
         var text = ""
         
         switch rsp {
