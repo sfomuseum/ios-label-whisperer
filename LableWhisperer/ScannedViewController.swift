@@ -16,18 +16,13 @@ class ScannedViewController: UITableViewController {
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        NotificationCenter.default.post(name: Notification.Name("tableViewDisappearing"), object: nil)
+        // NotificationCenter.default.post(name: Notification.Name("tableViewDisappearing"), object: nil)
     }
     
     // MARK: - Segue Methods
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        /*
-        if let id = segue.identifier {
-         
-        }
-         */
+        // if let id = segue.identifier {
     }
     
     // MARK: - Table view data source
@@ -40,29 +35,16 @@ class ScannedViewController: UITableViewController {
         return matches.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-        
-        guard cell.imageView != nil else {
-            return cell
-        }
-        
-        cell.imageView?.image = nil
-        cell.textLabel?.text = ""
-        
-        let idx = indexPath.row
-        let match = matches[idx]
-        
-        cell.textLabel?.text = match.accession_number
-        
-        func completion (im: UIImage?) -> Void {
-            // cell.textLabel?.text = titles[indexPath.row]
-        }
-        
-        // match.load(to: view, with: completion)
-        return cell
-}
+    override func tableView(_ tableView: UITableView,
+                            cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+       // Ask for a cell of the appropriate type.
+       let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+            
+       // Configure the cell’s contents with the row and section number.
+       // The Basic cell style guarantees a label view is present in textLabel.
+       cell.textLabel!.text = "Row \(indexPath.row)"
+       return cell
+    }    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)

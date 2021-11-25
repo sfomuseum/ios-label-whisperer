@@ -17,9 +17,7 @@ class ViewController: UIViewController {
 
     @IBOutlet var scanned_text: UITextView!
     @IBOutlet var scan_button: UIButton!
-    
-    @IBOutlet var activityIndicator: UIActivityIndicatorView!
-        
+            
     // var resultsViewController: (UIViewController & RecognizedTextDataSource)?
     var textRecognitionRequest = VNRecognizeTextRequest()
         
@@ -117,25 +115,27 @@ class ViewController: UIViewController {
             present(vc, animated: true, completion: nil)
         }
         
-        self.scanned_text?.text = text // transcript
+        // self.scanned_text?.text = text // transcript
     }
 }
 
 extension ViewController: VNDocumentCameraViewControllerDelegate {
     func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {        
         
-        self.activityIndicator.isHidden = false
-        self.activityIndicator.startAnimating()
+        // self.activityIndicator.isHidden = false
+        // self.activityIndicator.startAnimating()
         controller.dismiss(animated: true) {
             DispatchQueue.global(qos: .userInitiated).async {
                 for pageNumber in 0 ..< scan.pageCount {
                     let image = scan.imageOfPage(at: pageNumber)
                     self.processImage(image: image)
                 }
+                /*
                 DispatchQueue.main.async {
                     self.activityIndicator.stopAnimating()
                     self.activityIndicator.isHidden = true
                 }
+                */
             }
         }
     }
