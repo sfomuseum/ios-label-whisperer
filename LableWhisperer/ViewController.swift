@@ -110,6 +110,11 @@ class ViewController: UIViewController {
             for n in results {
                 text += "\(n.accession_number) (\(n.organization))\n"
             }
+            
+            let vc = ScannedViewController()
+            vc.matches = results
+            
+            present(vc, animated: true, completion: nil)
         }
         
         self.scanned_text?.text = text // transcript
