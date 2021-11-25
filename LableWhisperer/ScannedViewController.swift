@@ -7,7 +7,12 @@ class ScannedViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("HELLO \(self.matches)")
+        
+        // This is important - it is necessary to prevent "unable to dequeue
+        // a cell with identifier" errors even though the identifier is set
+        // in the storyboard. Dunno...
+        
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -37,20 +42,19 @@ class ScannedViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView,
                             cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       // Ask for a cell of the appropriate type.
-       let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        
+       let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
             
-       // Configure the cell’s contents with the row and section number.
-       // The Basic cell style guarantees a label view is present in textLabel.
-       cell.textLabel!.text = "Row \(indexPath.row)"
-       return cell
+        let idx = indexPath.row
+        let m = self.matches[idx]
+        
+        cell.textLabel!.text = "\(m.accession_number) (\(m.organization))"
+        return cell
     }    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        NotificationCenter.default.post(name: Notification.Name("setCurrentPage"), object: indexPath.row)
-        dismiss(animated: true)
+                dismiss(animated: true)
     }
     
 }

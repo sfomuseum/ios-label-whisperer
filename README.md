@@ -48,11 +48,22 @@ This project was accidentally named `LableWhisperer` in XCode. There are a bunch
     }
 ```
 
+## What does it do?
+
+Currently the application:
+
+* Loads all the "definition" files in [data.bundle](data.bundle) at launch. Although multiple definition files are supported, there is currently only one bundled with the app for reasons discussed below.
+* Display a `Scan` button which launches a `VNRecognizedTextObservation` process.
+* Call the `ExtractFromText` method (from the [swift-accession-numbers](https://github.com/sfomuseum/accession-numbers) package with the text results of the `VNRecognizedTextObservation` process.
+* Display a "table view" with the resulting matches.
+
 ## Next steps
 
 Next steps are:
 
-* Decide how and where to store and load multiple accession number "definition" files. Maybe the best thing is to always import everything from the [sfomuseum/accession-numbers](https://github.com/sfomuseum/accession-numbers) repository and add a preferences window for enabling or disabling things. TBD.
+* Some sort of preferences window for enabling or disabling definitions. There are enough variations in the patterns that different organizations use that matching any text against all the supported definitions will result in bunk matches. _Eventually if and when we have sufficient geographic data for organizations (see the `whosonfirst_id` property in definition files) we might be able to load or filter definition files using geo-fencing but that is probably still a ways off from being a reality._
+
+* Better error handling and feedback if there are no matching accession numbers.
 
 * Think about actions (or Protocols) for things to _do_ with an accession number. For example, calling an API to get more information about an object. Maybe that doesn't belong here and maybe this just needs to be a plain vanilla package library, or framework, that hides a bunch of boiler-plate code with "a button" that returns accession numbers.
 

@@ -25,32 +25,15 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // START OF load data
         
-        if let url = Bundle.main.url(forResource: "sfomuseum", withExtension: "json") {
-
-        var data: Data
-        var def: Definition
+        let def_rsp = self.loadDefinitionFiles()
         
-        do {
-            data = try Data(contentsOf: url)
-        } catch (let error){
-            fatalError("Failed to load  from bundle, \(error).")
+        switch def_rsp {
+        case .failure(let error):
+            fatalError("Failed to load definitions, \(error).")
+        case .success(let defs):
+            candidates = defs
         }
-        
-        let decoder = JSONDecoder()
-        
-        do {
-            def = try decoder.decode(Definition.self, from: data)
-        } catch (let error){
-            fatalError("Failed to load organization, \(error).")
-        }
-            
-            candidates.append(def)
-        }
-                       
-        // END OF load data
         
         textRecognitionRequest = VNRecognizeTextRequest(completionHandler: { (request, error) in
 
@@ -67,7 +50,76 @@ class ViewController: UIViewController {
             textRecognitionRequest.usesLanguageCorrection = true
     }
 
+    private func listDefinitionFiles() -> Result<[URL], Error> {
         
+        let data = Bundle.main.resourcePath! + "/data.bundle/"
+        let root = URL(string: data)
+        
+        var directoryContents: [URL]
+        
+        do {
+            directoryContents = try FileManager.default.contentsOfDirectory(at: root!, includingPropertiesForKeys: nil)
+        } catch (let error) {
+            return .failure(error)
+        }
+        
+        let definitions = directoryContents.filter({ $0.pathExtension == "json" })
+        return .success(definitions)
+    }
+    
+    private func loadDefinitionFiles() -> Result<[Definition], Error> {
+        
+        var definitions = [Definition]()
+        var urls: [URL]
+        
+        let list_rsp = self.listDefinitionFiles()
+                
+        switch list_rsp {
+        case .failure(let error):
+            return .failure(error)
+        case .success(let results):
+            urls = results
+        }
+        
+        // TO DO: This, but asynchronously
+        
+        for u in urls {
+            
+            let def_rsp = self.loadDefinitionFromURL(url: u)
+            
+            switch def_rsp {
+            case .failure(let error):
+                return .failure(error)
+            case .success(let def):
+                definitions.append(def)
+            }
+        }
+        
+        return .success(definitions)
+    }
+    
+    private func loadDefinitionFromURL(url: URL) -> Result<Definition, Error> {
+             
+        var data: Data
+        var def: Definition
+        
+        do {
+            data = try Data(contentsOf: url)
+        } catch (let error){
+            return .failure(error)
+        }
+        
+        let decoder = JSONDecoder()
+        
+        do {
+            def = try decoder.decode(Definition.self, from: data)
+        } catch (let error){
+            return .failure(error)
+        }
+        
+        return .success(def)
+    }
+    
         @IBAction func scan(_ sender: UIControl) {
             let documentCameraViewController = VNDocumentCameraViewController()
             documentCameraViewController.delegate = self
@@ -99,23 +151,15 @@ class ViewController: UIViewController {
         }
         
         let rsp = ExtractFromText(text: transcript, definitions: self.candidates)
-        var text = ""
         
         switch rsp {
         case .failure(let error):
             print("Failed to extract accession numbers from text, \(error).")
         case .success(let results):
-            for n in results {
-                text += "\(n.accession_number) (\(n.organization))\n"
-            }
-            
             let vc = ScannedViewController()
             vc.matches = results
-            
             present(vc, animated: true, completion: nil)
         }
-        
-        // self.scanned_text?.text = text // transcript
     }
 }
 

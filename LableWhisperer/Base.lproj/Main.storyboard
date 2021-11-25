@@ -13,11 +13,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="LableWhisperer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RK6-Mz-d2b">
-                                <rect key="frame" x="178.5" y="432.5" width="57" height="31"/>
+                                <rect key="frame" x="178.5" y="405.5" width="57" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Scan"/>
                                 <connections>
@@ -35,7 +35,6 @@
                     <navigationItem key="navigationItem" id="35A-gE-8jH"/>
                     <connections>
                         <outlet property="scan_button" destination="dAz-A1-3Rw" id="NRr-J6-Vvq"/>
-                        <segue destination="Eb4-V7-D5z" kind="show" id="eiA-PS-tkg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -43,33 +42,36 @@
             <point key="canvasLocation" x="23" y="363"/>
         </scene>
         <!--Scanned View Controller-->
-        <scene sceneID="WZx-bc-jWG">
+        <scene sceneID="gfh-VM-wtO">
             <objects>
-                <tableViewController storyboardIdentifier="scannedViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Eb4-V7-D5z" customClass="ScannedViewController" customModule="LableWhisperer" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="ZGv-03-4Xy">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                <tableViewController id="d3R-CN-vUf" customClass="ScannedViewController" customModule="LableWhisperer" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="wMQ-NF-rSs">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" id="P1r-Tg-Ndw">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="Cn7-K4-45i">
                                 <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="P1r-Tg-Ndw" id="SNX-Yv-wzb">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Cn7-K4-45i" id="ghG-sx-YT5">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="Eb4-V7-D5z" id="Fap-O5-aT1"/>
-                            <outlet property="delegate" destination="Eb4-V7-D5z" id="0DE-50-V2a"/>
+                            <outlet property="dataSource" destination="d3R-CN-vUf" id="4eB-uc-vsj"/>
+                            <outlet property="delegate" destination="d3R-CN-vUf" id="YRd-hZ-l1h"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="i9c-PD-NS8"/>
+                    <navigationItem key="navigationItem" id="YoO-Wr-J66"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="scannedMatches" id="nif-tY-jiq"/>
+                    </connections>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Vl5-D0-H6B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jqd-hT-BcC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1513" y="-320"/>
+            <point key="canvasLocation" x="1138" y="363"/>
         </scene>
     </scenes>
     <resources>

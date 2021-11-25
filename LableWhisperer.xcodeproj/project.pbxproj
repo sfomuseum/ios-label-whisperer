@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4A04F75C274F0CBE00B40B82 /* ScannedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A04F75B274F0CBE00B40B82 /* ScannedViewController.swift */; };
+		4A345B07274F2DC1003EF394 /* data.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4A345B06274F2DC1003EF394 /* data.bundle */; };
 		4A792895273F286100C92087 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A792894273F286100C92087 /* AppDelegate.swift */; };
 		4A792897273F286100C92087 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A792896273F286100C92087 /* SceneDelegate.swift */; };
 		4A792899273F286100C92087 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A792898273F286100C92087 /* ViewController.swift */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		4A04F75B274F0CBE00B40B82 /* ScannedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannedViewController.swift; sourceTree = "<group>"; };
+		4A345B06274F2DC1003EF394 /* data.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = data.bundle; sourceTree = "<group>"; };
 		4A792891273F286100C92087 /* LableWhisperer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LableWhisperer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A792894273F286100C92087 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A792896273F286100C92087 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -48,6 +50,7 @@
 		4A792888273F286100C92087 = {
 			isa = PBXGroup;
 			children = (
+				4A345B06274F2DC1003EF394 /* data.bundle */,
 				4A792893273F286100C92087 /* LableWhisperer */,
 				4A792892273F286100C92087 /* Products */,
 			);
@@ -146,6 +149,7 @@
 				4A79289E273F286400C92087 /* Assets.xcassets in Resources */,
 				4A8AC354274487C2002F4C7C /* sfomuseum.json in Resources */,
 				4A79289C273F286100C92087 /* Main.storyboard in Resources */,
+				4A345B07274F2DC1003EF394 /* data.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
