@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,34 +11,16 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="LableWhisperer" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="rMU-od-oBY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RK6-Mz-d2b">
-                                <rect key="frame" x="178.5" y="405.5" width="57" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Scan"/>
-                                <connections>
-                                    <action selector="scan:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FMV-gg-zgR"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="RK6-Mz-d2b" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RoR-b8-Ls4"/>
-                            <constraint firstItem="RK6-Mz-d2b" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="dAz-A1-3Rw"/>
-                        </constraints>
-                    </view>
+                    </tableView>
                     <navigationItem key="navigationItem" id="35A-gE-8jH"/>
-                    <connections>
-                        <outlet property="scan_button" destination="dAz-A1-3Rw" id="NRr-J6-Vvq"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="23" y="363"/>
+            <point key="canvasLocation" x="345" y="-342"/>
         </scene>
         <!--Scanned View Controller-->
         <scene sceneID="gfh-VM-wtO">
@@ -71,7 +52,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jqd-hT-BcC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1138" y="363"/>
+            <point key="canvasLocation" x="1583" y="-1023"/>
         </scene>
     </scenes>
     <resources>

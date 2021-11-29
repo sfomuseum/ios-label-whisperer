@@ -21,19 +21,12 @@ class ViewController: UIViewController {
     // var resultsViewController: (UIViewController & RecognizedTextDataSource)?
     var textRecognitionRequest = VNRecognizeTextRequest()
         
-    var candidates = [Definition]()
+    var current: Definition?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let def_rsp = self.loadDefinitionFiles()
         
-        switch def_rsp {
-        case .failure(let error):
-            fatalError("Failed to load definitions, \(error).")
-        case .success(let defs):
-            candidates = defs
-        }
         
         textRecognitionRequest = VNRecognizeTextRequest(completionHandler: { (request, error) in
 
@@ -50,75 +43,7 @@ class ViewController: UIViewController {
             textRecognitionRequest.usesLanguageCorrection = true
     }
 
-    private func listDefinitionFiles() -> Result<[URL], Error> {
-        
-        let data = Bundle.main.resourcePath! + "/data.bundle/"
-        let root = URL(string: data)
-        
-        var directoryContents: [URL]
-        
-        do {
-            directoryContents = try FileManager.default.contentsOfDirectory(at: root!, includingPropertiesForKeys: nil)
-        } catch (let error) {
-            return .failure(error)
-        }
-        
-        let definitions = directoryContents.filter({ $0.pathExtension == "json" })
-        return .success(definitions)
-    }
     
-    private func loadDefinitionFiles() -> Result<[Definition], Error> {
-        
-        var definitions = [Definition]()
-        var urls: [URL]
-        
-        let list_rsp = self.listDefinitionFiles()
-                
-        switch list_rsp {
-        case .failure(let error):
-            return .failure(error)
-        case .success(let results):
-            urls = results
-        }
-        
-        // TO DO: This, but asynchronously
-        
-        for u in urls {
-            
-            let def_rsp = self.loadDefinitionFromURL(url: u)
-            
-            switch def_rsp {
-            case .failure(let error):
-                return .failure(error)
-            case .success(let def):
-                definitions.append(def)
-            }
-        }
-        
-        return .success(definitions)
-    }
-    
-    private func loadDefinitionFromURL(url: URL) -> Result<Definition, Error> {
-             
-        var data: Data
-        var def: Definition
-        
-        do {
-            data = try Data(contentsOf: url)
-        } catch (let error){
-            return .failure(error)
-        }
-        
-        let decoder = JSONDecoder()
-        
-        do {
-            def = try decoder.decode(Definition.self, from: data)
-        } catch (let error){
-            return .failure(error)
-        }
-        
-        return .success(def)
-    }
     
         @IBAction func scan(_ sender: UIControl) {
             let documentCameraViewController = VNDocumentCameraViewController()
@@ -150,7 +75,16 @@ class ViewController: UIViewController {
             transcript += "\n"
         }
         
-        let rsp = ExtractFromText(text: transcript, definitions: self.candidates)
+        guard self.current != nil else {            
+            let vc = DefinitionsViewController()
+            present(vc, animated: true, completion: nil)
+            return
+        }
+        
+        var candidates  = [Definition]()
+        candidates.append(self.current!)
+        
+        let rsp = ExtractFromText(text: transcript, definitions: candidates)
         
         switch rsp {
         case .failure(let error):
@@ -164,24 +98,18 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: VNDocumentCameraViewControllerDelegate {
+    
     func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {        
         
-        // self.activityIndicator.isHidden = false
-        // self.activityIndicator.startAnimating()
         controller.dismiss(animated: true) {
             DispatchQueue.global(qos: .userInitiated).async {
                 for pageNumber in 0 ..< scan.pageCount {
                     let image = scan.imageOfPage(at: pageNumber)
                     self.processImage(image: image)
                 }
-                /*
-                DispatchQueue.main.async {
-                    self.activityIndicator.stopAnimating()
-                    self.activityIndicator.isHidden = true
-                }
-                */
             }
         }
     }
+    
 }
 
