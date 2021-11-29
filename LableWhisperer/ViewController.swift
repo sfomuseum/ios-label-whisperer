@@ -16,8 +16,10 @@ import AccessionNumbers
 class ViewController: UIViewController {
 
     @IBOutlet var scanned_text: UITextView!
+    
     @IBOutlet var scan_button: UIButton!
-            
+    @IBOutlet var choose_button: UIButton!
+    
     // var resultsViewController: (UIViewController & RecognizedTextDataSource)?
     var textRecognitionRequest = VNRecognizeTextRequest()
         
@@ -25,8 +27,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         
         textRecognitionRequest = VNRecognizeTextRequest(completionHandler: { (request, error) in
 
@@ -44,6 +44,11 @@ class ViewController: UIViewController {
     }
 
     
+    @IBAction func choose(_ sender: UIControl) {
+        let vc = DefinitionsViewController()
+        present(vc, animated: true, completion: nil)
+        return
+    }
     
         @IBAction func scan(_ sender: UIControl) {
             let documentCameraViewController = VNDocumentCameraViewController()
