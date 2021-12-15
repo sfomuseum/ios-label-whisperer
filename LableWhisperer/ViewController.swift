@@ -22,6 +22,8 @@ class ViewController: UIViewController {
     
     @IBOutlet var current_organization: UINavigationItem!
     
+    @IBOutlet var current_definition: UITextView!
+    
     // var resultsViewController: (UIViewController & RecognizedTextDataSource)?
     var textRecognitionRequest = VNRecognizeTextRequest()
         
@@ -89,8 +91,21 @@ class ViewController: UIViewController {
             
             // TO DO: save to user prefs
             
-            self.current_organization.title = self.current?.organization_name
+            self.current_organization.title = self.current!.organization_name
+            
             self.scan_button.isEnabled = true
+            
+            let encoder = JSONEncoder()
+            encoder.outputFormatting = .prettyPrinted
+            
+            do {
+            let data = try encoder.encode(self.current!)
+            
+                self.current_definition.text = String(data: data, encoding: .utf8)!
+                
+            } catch (let error){
+                print("SAD \(error)")
+            }
         }
         
         return .success(())

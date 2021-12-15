@@ -52,28 +52,40 @@
                                     <navigationItem title="Label Whisperer" id="FFU-eC-PVQ"/>
                                 </items>
                             </navigationBar>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="JJC-45-bBE">
+                                <rect key="frame" x="0.0" y="56" width="414" height="696"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="4WI-CR-VNX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="3uk-Re-6ep"/>
                             <constraint firstItem="4Jj-hT-Bm7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="P4o-eI-Sen"/>
+                            <constraint firstItem="JJC-45-bBE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="PNo-SI-cKC"/>
                             <constraint firstItem="4Jj-hT-Bm7" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="QwN-P4-1wP"/>
+                            <constraint firstItem="JJC-45-bBE" firstAttribute="top" secondItem="4WI-CR-VNX" secondAttribute="bottom" id="UXl-5f-bwE"/>
+                            <constraint firstItem="4Jj-hT-Bm7" firstAttribute="top" secondItem="JJC-45-bBE" secondAttribute="bottom" id="VBW-PQ-n2x"/>
                             <constraint firstItem="4Jj-hT-Bm7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cRk-fw-WK4"/>
                             <constraint firstItem="4WI-CR-VNX" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="qlx-5I-VsO"/>
                             <constraint firstItem="4WI-CR-VNX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="wCr-fu-0bJ"/>
+                            <constraint firstItem="JJC-45-bBE" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="z4F-yB-I2B"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="35A-gE-8jH"/>
                     <connections>
                         <outlet property="choose_button" destination="cZV-MV-pS2" id="3C3-sw-LUw"/>
+                        <outlet property="current_definition" destination="JJC-45-bBE" id="ird-LP-ySl"/>
                         <outlet property="current_organization" destination="FFU-eC-PVQ" id="GsK-Xj-pWu"/>
                         <outlet property="scan_button" destination="RK6-Mz-d2b" id="qTl-J9-sb1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="344.92753623188406" y="-342.1875"/>
+            <point key="canvasLocation" x="343.47826086956525" y="-342.1875"/>
         </scene>
         <!--Definitions View Controller-->
         <scene sceneID="gPJ-Cx-b1B">
@@ -143,6 +155,9 @@
         <segue reference="QP5-ff-rTN"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
