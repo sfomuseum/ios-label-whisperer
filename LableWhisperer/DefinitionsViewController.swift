@@ -22,7 +22,12 @@ class DefinitionsViewController: UITableViewController {
             case .failure(let error):
                 fatalError("Failed to load definitions, \(error).")
             case .success(let defs):
-                definitions = defs
+                
+                let sorted = defs.sorted {
+                    $0.organization_name < $1.organization_name
+                }
+                
+                definitions = sorted
             }
             
         }
