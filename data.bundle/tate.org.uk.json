@@ -1,0 +1,25 @@
+{
+    "organization_name": "Tate Modern",
+    "organization_url": "https://www.tate.org.uk",
+    "whosonfirst_id": 923796649,
+    "patterns": [
+	{
+	    "label": "common",
+	    "pattern": "((?:[A-Z]+)(?:[0-9]*))",
+	    "tests": {
+		"T02361": [
+		    "T02361"
+		],		
+		"T02011": [
+		    "T02011"
+		],
+		"P82135": [
+		    "P82135"
+		],
+		"AR00193": [
+		    "AR00193"
+		]
+	    }
+	}
+    ]
+}

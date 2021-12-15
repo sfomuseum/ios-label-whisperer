@@ -1,0 +1,25 @@
+{
+    "organization_name": "National Air and Space Museum",
+    "organization_url": "https://airandspace.si.edu/",
+    "whosonfirst_id": -1,
+    "patterns": [
+	{
+	    "label": "common",
+	    "pattern": "((?:\\D)(?:\\d{4})(?:\\d)+)",
+	    "tests": {
+		"A19610048000": [
+		    "A19610048000"
+		],
+		"A19670093000": [
+		    "A19670093000"
+		],
+		"A19920072000": [
+		    "A19920072000"
+		],
+		"A19670176000": [
+		    "A19670176000"
+		]
+	    }
+	}
+    ]
+}

@@ -12,7 +12,7 @@ class DefinitionsViewController: UITableViewController {
         // a cell with identifier" errors even though the identifier is set
         // in the storyboard. Dunno...
         
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "definitionCell")
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         
         if definitions.count == 0 {
                     

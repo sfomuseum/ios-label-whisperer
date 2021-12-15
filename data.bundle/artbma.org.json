@@ -1,0 +1,22 @@
+{
+    "organization_name": "Baltimore Museum of Art",
+    "organization_url": "https://artbma.org",
+    "whosonfirst_id": 757060481,
+    "patterns": [
+	{
+	    "label": "common",
+	    "pattern": "((?:\\d{4})\\.(?:\\d+)(?:(?:\\.[0-9\\.]*)*)?)",
+	    "tests": {
+		"2009.42": [
+		    "2009.42"
+		],
+		"1938.304": [
+		    "1938.304"
+		],
+		"1980.441.28": [
+		    "1980.441.28"
+		]
+	    }
+	}
+    ]
+}

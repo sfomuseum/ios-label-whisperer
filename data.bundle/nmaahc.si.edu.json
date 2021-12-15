@@ -1,0 +1,25 @@
+{
+    "organization_name": "National Museum of African American History and Culture",
+    "organization_url": "https://nmaahc.si.edu/",
+    "whosonfirst_id": -1,
+    "patterns": [
+	{
+	    "label": "common",
+	    "pattern": "((?:\\d{4})\\.(?:\\d+)(?:\\.\\d+){0,2})",
+	    "tests": {
+		"2013.68.19": [
+		    "2013.68.19"
+		],
+		"2012.110": [
+		    "2012.110"
+		],
+		"2016.5.2.11": [
+		    "2016.5.2.11"
+		],
+		"2014.270.2": [
+		    "2014.270.2"
+		]
+	    }
+	}
+    ]
+}

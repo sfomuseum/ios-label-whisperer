@@ -1,0 +1,28 @@
+{
+    "organization_name": "National Museum of American History",
+    "organization_url": "https://americanhistory.si.edu/",
+    "whosonfirst_id": -1,
+    "patterns": [
+	{
+	    "label": "common",
+	    "pattern": "((?:[A-Z]*\\d*)\\.(?:\\d+)\\.(?:\\d+)\\.*(?:\\w+)*)",
+	    "tests": {
+		"1980.0771.03": [
+		    "1980.0771.03"
+		],
+		"PL.227739.1801.I1": [
+		    "PL.227739.1801.I1"
+		],
+		"CE.62.1061": [
+		    "CE.62.1061"
+		],
+		"PL.227739.1829.X01": [
+		    "PL.227739.1829.X01"
+		],
+		"PL.315264.3833": [
+		    "PL.315264.3833"
+		]
+	    }
+	}
+    ]
+}

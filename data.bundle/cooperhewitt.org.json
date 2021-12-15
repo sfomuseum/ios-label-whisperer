@@ -1,0 +1,16 @@
+{
+    "organization_name": "Cooper Hewitt Smithsonian National Design Museum",
+    "organization_url": "https://cooperhewitt.org/",
+    "whosonfirst_id": 420571601,
+    "patterns": [
+	{
+	    "label": "common",
+	    "pattern": "((?:[a-z0-9]+)-(?:[a-z0-9]+)-(?:[a-z0-9]+))",
+	    "tests": {
+	    	"2007-27-30": [
+		    "2007-27-30"
+		]
+	    }
+	}
+    ]
+}

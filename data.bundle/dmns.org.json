@@ -1,0 +1,40 @@
+{
+    "organization_name": "Denver Museum of Nature & Science",
+    "organization_url": "https://www.dmns.org",
+    "whosonfirst_id": 320495969,
+    "patterns": [
+	{
+	    "label": "common",
+	    "pattern": "((?:\\w+)(?:[\\.\\-]+)(?:\\d+[A-Z\\&\\-\\d]*))",
+	    "tests": {
+		"A1290.6": [
+		    "A1290.6"
+		],
+		"A1396.24A&B": [
+		    "A1396.24A&B"
+		],
+		"BA21-849": [
+		    "BA21-849"
+		],
+		"OS-239-1": [
+		    "OS-239-1"
+		],
+		"EGM.19492": [
+		    "EGM.19492"
+		],
+		"ZM.6700": [
+		    "ZM.6700"
+		],
+		"ZE.35094": [
+		    "ZE.35094"
+		],
+		"HS.2010-103-2": [
+		    "HS.2010-103-2"
+		],		
+		"HS.2014-236-102": [
+		    "HS.2014-236-102"
+		]
+	    }
+	}
+    ]
+}
