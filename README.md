@@ -12,11 +12,23 @@ It works enough to scan and extract text from a camera source and to print that 
 
 This project was accidentally named `LableWhisperer` in XCode. There are a bunch of things to figure out.
 
+## What does it do?
+
+Currently the application:
+
+* Loads all the "definition" files in [data.bundle](data.bundle) at launch.
+* Display a `Choose` button which displays a "table view" for selecting a specific institution and it's rules for extracting accession numbers from text.
+* Display a `Scan` button which launches a `VNRecognizedTextObservation` process.
+* Call the `ExtractFromText` method (from the [swift-accession-numbers](https://github.com/sfomuseum/accession-numbers) package with the text results of the `VNRecognizedTextObservation` process.
+* Display a "table view" with the resulting matches.
+
 ## How does it work
 
-* At start up the application loads one or more accession number "definition" files. These are the JSON files in the `data` directory of the [accession-numbers](https://github.com/sfomuseum/accession-numbers) repository. At the moment there is exactly one definition file ([sfomuseum.json](https://github.com/sfomuseum/accession-numbers/blob/main/data/sfomuseum.json)) and it is hardcoded.
+* At start up the application loads one or more accession number "definition" files. These are the JSON files in the `data` directory of the [accession-numbers](https://github.com/sfomuseum/accession-numbers) repository. These are used to populate a "table view" to choose a specific institution whose accession numbers are being scanned. This view is presented when a user presses the "Choose" button.
 
-* Given a `VNRecognizedTextObservation` instance the application builds a text string which is then passed to the `ExtractFromText` method (defined in the [swift-accession-numbers](https://github.com/sfomuseum/swift-accession-numbers) package). For example: 
+* There is a second button, labeled "Scanned" that invoke iOS's text recognition workflow for scanning a wall label, or other text containing accession numbers.
+
+* Once scanned the application uses the resultant `VNRecognizedTextObservation` instance to build a text string which is then passed to the `ExtractFromText` method (defined in the [swift-accession-numbers](https://github.com/sfomuseum/swift-accession-numbers) package). For example: 
 
 ```
     func addRecognizedText(recognizedText: [VNRecognizedTextObservation]) {
@@ -29,39 +41,30 @@ This project was accidentally named `LableWhisperer` in XCode. There are a bunch
             transcript += "\n"
         }
 
-	// var defintions = [Definitions]()
-	// populate definitions here...
+	// This is populated with the defintion chosen in the "Choose" table view
+	var defintions = [Definitions](...)
+
 	
         let rsp = ExtractFromText(text: transcript, definitions: definitions)
-        var text = ""
-        
+
         switch rsp {
         case .failure(let error):
             print("Failed to extract accession numbers from text, \(error).")
         case .success(let results):
-            for n in results {
-                text += "\(n.accession_number) (\(n.organization))\n"
-            }
+            let vc = ScannedViewController()
+            vc.matches = results
+            present(vc, animated: true, completion: nil)
         }
-        
-        self.scanned_text?.text = text
     }
 ```
 
-## What does it do?
+* The accession numbers that were able to be extracted from the text derived from the photograph are then displayed in a separate table view.
 
-Currently the application:
-
-* Loads all the "definition" files in [data.bundle](data.bundle) at launch. Although multiple definition files are supported, there is currently only one bundled with the app for reasons discussed below.
-* Display a `Scan` button which launches a `VNRecognizedTextObservation` process.
-* Call the `ExtractFromText` method (from the [swift-accession-numbers](https://github.com/sfomuseum/accession-numbers) package with the text results of the `VNRecognizedTextObservation` process.
-* Display a "table view" with the resulting matches.
+* That's it so far.
 
 ## Next steps
 
 Next steps are:
-
-* Some sort of preferences window for enabling or disabling definitions. There are enough variations in the patterns that different organizations use that matching any text against all the supported definitions will result in bunk matches. _Eventually if and when we have sufficient geographic data for organizations (see the `whosonfirst_id` property in definition files) we might be able to load or filter definition files using geo-fencing but that is probably still a ways off from being a reality._
 
 * Better error handling and feedback if there are no matching accession numbers.
 
