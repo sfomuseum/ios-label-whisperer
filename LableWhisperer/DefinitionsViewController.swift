@@ -117,7 +117,7 @@ class DefinitionsViewController: UITableViewController {
     // MARK: - Segue Methods
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // if let id = segue.identifier {
+        
     }
     
     // MARK: - Table view data source
@@ -145,6 +145,12 @@ class DefinitionsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let def = definitions[indexPath.row]
+        print("SELECT \(def)")
+
+        NotificationCenter.default.post(name: Notification.Name("setCurrentOrganization"), object: def)
+        
         tableView.deselectRow(at: indexPath, animated: true)
                 dismiss(animated: true)
     }

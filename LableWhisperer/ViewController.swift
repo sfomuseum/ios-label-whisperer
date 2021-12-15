@@ -20,13 +20,19 @@ class ViewController: UIViewController {
     @IBOutlet var scan_button: UIButton!
     @IBOutlet var choose_button: UIButton!
     
+    @IBOutlet var current_organization: UINavigationItem!
+    
     // var resultsViewController: (UIViewController & RecognizedTextDataSource)?
     var textRecognitionRequest = VNRecognizeTextRequest()
         
     var current: Definition?
     
+    var opQueue = OperationQueue()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.setupNotificationHandlers()
         
         textRecognitionRequest = VNRecognizeTextRequest(completionHandler: { (request, error) in
 
@@ -41,8 +47,54 @@ class ViewController: UIViewController {
         
         textRecognitionRequest.recognitionLevel = .accurate
             textRecognitionRequest.usesLanguageCorrection = true
+        
+        self.scan_button.isEnabled = false
     }
 
+    // MARK: - Alert Methods
+    
+    private func showAlert(label: String, message: String){
+        
+        // TO DO: vibrate
+        // https://developer.apple.com/documentation/uikit/uinotificationfeedbackgenerator/2369826-notificationoccurred
+        
+        // self.app.logger.debug("show alert \(label): \(message)")
+        
+        let alertController = UIAlertController(
+            title: label,
+            message: message,
+            preferredStyle: .alert
+        )
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        self.opQueue.addOperation {
+            OperationQueue.main.addOperation({
+                self.present(alertController, animated: true, completion: nil)
+            })
+        }
+    }
+    
+    private func setupNotificationHandlers() -> Result<Void, Error> {
+        
+        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: "setCurrentOrganization"),
+                                               object: nil,
+                                               queue: .main) { (notification) in
+            
+            guard let def = notification.object as? Definition else {
+                self.scan_button.isEnabled = false
+                return
+            }
+            
+            self.current = def
+            
+            // TO DO: save to user prefs
+            
+            self.current_organization.title = self.current?.organization_name
+            self.scan_button.isEnabled = true
+        }
+        
+        return .success(())
+    }
     
     @IBAction func choose(_ sender: UIControl) {
         let vc = DefinitionsViewController()
