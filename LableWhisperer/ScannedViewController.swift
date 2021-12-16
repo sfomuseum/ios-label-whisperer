@@ -3,6 +3,7 @@ import AccessionNumbers
 
 class ScannedViewController: UITableViewController {
     
+    var definition: Definition!
     var matches = [Match]()
     
     override func viewDidLoad() {
@@ -53,7 +54,20 @@ class ScannedViewController: UITableViewController {
     }    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let m = matches[indexPath.row]
+        let rsp = definition.ObjectURL(accession_number: m.accession_number)
+        
+        switch rsp {
+        case .failure(let error):
+            print("Failed to extract accession numbers from text, \(error).")
+        case .success(let url):
+            let vc = WebViewController()
+            vc.url = url
+            present(vc, animated: true, completion: nil)
+        }    
+        
+        // tableView.deselectRow(at: indexPath, animated: true)
                 dismiss(animated: true)
     }
     

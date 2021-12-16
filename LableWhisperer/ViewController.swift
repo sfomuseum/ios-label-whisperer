@@ -164,6 +164,7 @@ class ViewController: UIViewController {
         case .success(let results):
             let vc = ScannedViewController()
             vc.matches = results
+            vc.definition = self.current
             present(vc, animated: true, completion: nil)
         }
     }
