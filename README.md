@@ -21,6 +21,7 @@ Currently the application:
 * Display a `Scan` button which launches a `VNRecognizedTextObservation` process.
 * Call the `ExtractFromText` method (from the [swift-accession-numbers](https://github.com/sfomuseum/accession-numbers) package with the text results of the `VNRecognizedTextObservation` process.
 * Display a "table view" with the resulting matches.
+* When a matching accession number is selected, the application will try to resolve its corresponding webpage URL and load that URL in a new view controller.
 
 ## How does it work
 
