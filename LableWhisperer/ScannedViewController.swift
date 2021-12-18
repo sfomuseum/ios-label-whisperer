@@ -44,31 +44,54 @@ class ScannedViewController: UITableViewController {
     override func tableView(_ tableView: UITableView,
                             cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-       let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-            
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        
         let idx = indexPath.row
         let m = self.matches[idx]
         
         cell.textLabel!.text = "\(m.accession_number) (\(m.organization))"
         return cell
-    }    
+    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        var url: URL?
+        
         let m = matches[indexPath.row]
-        let rsp = definition.ObjectURL(accession_number: m.accession_number)
         
-        switch rsp {
-        case .failure(let error):
-            print("Failed to extract accession numbers from text, \(error).")
-        case .success(let url):
-            let vc = WebViewController()
-            vc.url = url
-            present(vc, animated: true, completion: nil)
-        }    
+        if definition.object_url != nil {
+            
+            let object_rsp = definition.ObjectURL(accession_number: m.accession_number)
+            
+            switch object_rsp {
+            case .failure(let error):
+                print("Failed to derive object URL for accession number \(m.accession_number), \(error).")
+                
+            case .success(let u):
+                
+                url = u
+                
+                let vc = WebViewController()
+                vc.url = url
+                present(vc, animated: true, completion: nil)
+            }
+        }
         
-        // tableView.deselectRow(at: indexPath, animated: true)
-                dismiss(animated: true)
+        if url != nil && definition.oembed_profile != nil {
+            print("OEMBED...")
+        }
+        
+        if url != nil && definition.iiif_manifest != nil {
+            print("IIIF")
+        } 
+        
+        if url == nil {
+            print("Failed to derive URL")
+            return
+        }
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        // dismiss(animated: true)
     }
     
 }

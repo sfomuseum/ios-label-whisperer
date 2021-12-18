@@ -144,7 +144,7 @@
                     <navigationItem key="navigationItem" id="YoO-Wr-J66"/>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="scannedMatches" id="nif-tY-jiq"/>
-                        <segue destination="wYv-Y7-kwp" kind="show" id="ZaN-z5-PqZ"/>
+                        <segue destination="wYv-Y7-kwp" kind="showDetail" id="ZaN-z5-PqZ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jqd-hT-BcC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -205,6 +205,55 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f9u-Cg-9tI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1748" y="-1310"/>
+        </scene>
+        <!--Embed View Controller-->
+        <scene sceneID="4Ou-nC-6vB">
+            <objects>
+                <viewController id="Lbo-ov-5wg" customClass="OEmbedViewController" customModule="LableWhisperer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MFJ-12-VH0">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tn5-Io-ATN">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <items>
+                                    <navigationItem title="Title" id="PxJ-UK-LKK"/>
+                                </items>
+                            </navigationBar>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zsm-dN-sNe">
+                                <rect key="frame" x="0.0" y="612" width="414" height="250"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="Mc0-hL-AhE"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aP7-qH-kP7">
+                                <rect key="frame" x="0.0" y="88" width="414" height="528"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="S05-fP-bWK"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="aP7-qH-kP7" firstAttribute="leading" secondItem="S05-fP-bWK" secondAttribute="leading" id="19S-BW-NCC"/>
+                            <constraint firstItem="Tn5-Io-ATN" firstAttribute="leading" secondItem="S05-fP-bWK" secondAttribute="leading" id="Npx-xV-AGI"/>
+                            <constraint firstItem="aP7-qH-kP7" firstAttribute="top" secondItem="Tn5-Io-ATN" secondAttribute="bottom" id="Pfk-3g-czp"/>
+                            <constraint firstAttribute="trailing" secondItem="zsm-dN-sNe" secondAttribute="trailing" id="PgW-9N-x6C"/>
+                            <constraint firstItem="Tn5-Io-ATN" firstAttribute="trailing" secondItem="S05-fP-bWK" secondAttribute="trailing" id="PnN-gY-Ew5"/>
+                            <constraint firstItem="zsm-dN-sNe" firstAttribute="bottom" secondItem="S05-fP-bWK" secondAttribute="bottom" id="T5S-tz-cLd"/>
+                            <constraint firstItem="S05-fP-bWK" firstAttribute="bottom" secondItem="aP7-qH-kP7" secondAttribute="bottom" constant="246" id="UcT-hQ-DOX"/>
+                            <constraint firstItem="zsm-dN-sNe" firstAttribute="leading" secondItem="MFJ-12-VH0" secondAttribute="leading" id="bCi-I9-Sbh"/>
+                            <constraint firstItem="Tn5-Io-ATN" firstAttribute="top" secondItem="S05-fP-bWK" secondAttribute="top" id="oI0-ia-YPP"/>
+                            <constraint firstItem="aP7-qH-kP7" firstAttribute="trailing" secondItem="S05-fP-bWK" secondAttribute="trailing" id="q5l-4p-r7Q"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X6I-5J-uvA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2437.68115942029" y="-1310.4910714285713"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

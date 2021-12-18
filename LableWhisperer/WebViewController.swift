@@ -17,7 +17,7 @@ class WebViewController: UIViewController, WKNavigationDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         let wk_conf = WKWebViewConfiguration()
         wk_conf.processPool = wk_pool
         wk_conf.websiteDataStore = wk_store
@@ -31,7 +31,6 @@ class WebViewController: UIViewController, WKNavigationDelegate {
         view = web_view
         
         web_view.load(request)
-        
     }
     
 }

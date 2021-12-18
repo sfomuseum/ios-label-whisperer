@@ -20,6 +20,8 @@
 		4A8AC352274484F9002F4C7C /* AccessionNumbers in Frameworks */ = {isa = PBXBuildFile; productRef = 4A8AC351274484F9002F4C7C /* AccessionNumbers */; };
 		4A8AC354274487C2002F4C7C /* sfomuseum.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A8AC353274487C2002F4C7C /* sfomuseum.json */; };
 		4AC319D1276ACB02002F7956 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC319D0276ACB02002F7956 /* WebViewController.swift */; };
+		4AC319D3276D7378002F7956 /* OEmbedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC319D2276D7378002F7956 /* OEmbedViewController.swift */; };
+		4AC319D5276D73A5002F7956 /* IIIFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC319D4276D73A5002F7956 /* IIIFViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,8 @@
 		4A7928A8273F311E00C92087 /* RecognizedTextDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizedTextDataSource.swift; sourceTree = "<group>"; };
 		4A8AC353274487C2002F4C7C /* sfomuseum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sfomuseum.json; sourceTree = "<group>"; };
 		4AC319D0276ACB02002F7956 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		4AC319D2276D7378002F7956 /* OEmbedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OEmbedViewController.swift; sourceTree = "<group>"; };
+		4AC319D4276D73A5002F7956 /* IIIFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IIIFViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +79,8 @@
 				4A792894273F286100C92087 /* AppDelegate.swift */,
 				4A792896273F286100C92087 /* SceneDelegate.swift */,
 				4A792898273F286100C92087 /* ViewController.swift */,
+				4AC319D2276D7378002F7956 /* OEmbedViewController.swift */,
+				4AC319D4276D73A5002F7956 /* IIIFViewController.swift */,
 				4AC319D0276ACB02002F7956 /* WebViewController.swift */,
 				4A7928A8273F311E00C92087 /* RecognizedTextDataSource.swift */,
 				4A79289A273F286100C92087 /* Main.storyboard */,
@@ -166,6 +172,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AC319D5276D73A5002F7956 /* IIIFViewController.swift in Sources */,
+				4AC319D3276D7378002F7956 /* OEmbedViewController.swift in Sources */,
 				4A792899273F286100C92087 /* ViewController.swift in Sources */,
 				4A3D70C7275463490043C67F /* DefinitionsViewController.swift in Sources */,
 				4A04F75C274F0CBE00B40B82 /* ScannedViewController.swift in Sources */,
