@@ -73,6 +73,8 @@ Next steps are:
 
 * Controls to refresh the definition files in the `data.bundle` folder (or equivalent) without the need to recompile the application.
 
+* Saving things, I guess. Maybe something along the lines of the ["wunderkammer" application](https://www.aaronland.info/weblog/2020/07/07/action/#wunderkammer).
+
 ## Help wanted
 
 I don't live and breathe iOS applications so any suggestions or contributions, particularly on the subjects discussed in the `Next steps` section would be welcome.
