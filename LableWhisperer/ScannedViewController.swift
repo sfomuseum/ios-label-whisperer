@@ -58,7 +58,7 @@ class ScannedViewController: UITableViewController {
         var url: URL?
         
         let m = matches[indexPath.row]
-        
+
         if definition.object_url != nil {
             
             let object_rsp = definition.ObjectURL(accession_number: m.accession_number)
@@ -69,6 +69,7 @@ class ScannedViewController: UITableViewController {
                 
             case .success(let u):
                 
+                print("URL IS \(u)")
                 url = u
                 
                 let vc = WebViewController()
