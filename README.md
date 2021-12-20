@@ -69,7 +69,9 @@ Next steps are:
 
 * Better error handling and feedback if there are no matching accession numbers.
 
-* Think about actions (or Protocols) for things to _do_ with an accession number. For example, calling an API to get more information about an object. Maybe that doesn't belong here and maybe this just needs to be a plain vanilla package library, or framework, that hides a bunch of boiler-plate code with "a button" that returns accession numbers.
+* Think about actions (or Protocols) for things to _do_ with an accession number. For example, calling an API to get more information about an object. Maybe that doesn't belong here and maybe this just needs to be a plain vanilla package library, or framework, that hides a bunch of boiler-plate code with "a button" that returns accession numbers. As of this writing there is a ViewController for loading a web page for definition files that contain an `object_url` URI template.
+
+* Controls to refresh the definition files in the `data.bundle` folder (or equivalent) without the need to recompile the application.
 
 ## Help wanted
 
