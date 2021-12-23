@@ -116,8 +116,7 @@ class ViewController: UIViewController {
         let vc = storyboard.instantiateViewController(withIdentifier: "ChooseViewController") as! ChooseViewController
         // let vc = ChooseViewController()
         print("SHOW")
-         present(vc, animated: true, completion: nil)
-        
+        present(vc, animated: true, completion: nil)        
     }
     
     @IBAction func choose(_ sender: UIControl) {
@@ -157,8 +156,9 @@ class ViewController: UIViewController {
         
         guard self.current != nil else {            
             // let vc = DefinitionsViewController()
-            let vc = ChooseViewController()
-            show(vc, sender: self)
+            //let vc = ChooseViewController()
+            //show(vc, sender: self)
+            showChooseVC()
             return
         }
         
