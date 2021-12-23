@@ -68,23 +68,10 @@ class ScannedViewController: UITableViewController {
                 print("Failed to derive object URL for accession number \(m.accession_number), \(error).")
                 
             case .success(let u):
-                
-                print("URL IS \(u)")
                 url = u
-                
-                let vc = WebViewController()
-                vc.url = url
-                present(vc, animated: true, completion: nil)
+                showWebViewVC(url: u)
             }
         }
-        
-        if url != nil && definition.oembed_profile != nil {
-            print("OEMBED...")
-        }
-        
-        if url != nil && definition.iiif_manifest != nil {
-            print("IIIF")
-        } 
         
         if url == nil {
             print("Failed to derive URL")
@@ -95,4 +82,10 @@ class ScannedViewController: UITableViewController {
         // dismiss(animated: true)
     }
     
+    private func showWebViewVC(url: URL) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
+        vc.url = url
+        show(vc, sender: self)
+    }
 }

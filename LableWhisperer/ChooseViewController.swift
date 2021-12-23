@@ -10,7 +10,6 @@ class ChooseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("HELLO")
         
         table_view.dataSource = self
         table_view.delegate = self
@@ -128,6 +127,15 @@ extension ChooseViewController: UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let def = definitions[indexPath.row]
+
+        NotificationCenter.default.post(name: Notification.Name("setCurrentOrganization"), object: def)
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+                dismiss(animated: true)
+    }
 }
 
 extension ChooseViewController: UITableViewDelegate {

@@ -19,7 +19,7 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="img-7g-vsz">
                                 <rect key="frame" x="0.0" y="769" width="414" height="44"/>
                                 <items>
-                                    <navigationItem title="Choose" id="ldm-8g-7ED">
+                                    <navigationItem id="ldm-8g-7ED">
                                         <barButtonItem key="rightBarButtonItem" style="plain" id="MN3-Pc-7r2">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="UIM-V2-FhX">
                                                 <rect key="frame" x="302" y="5" width="92" height="34.5"/>
@@ -151,41 +151,10 @@
             </objects>
             <point key="canvasLocation" x="-193" y="-329"/>
         </scene>
-        <!--Definitions View Controller-->
-        <scene sceneID="gPJ-Cx-b1B">
-            <objects>
-                <tableViewController id="TiR-uX-Vbe" customClass="DefinitionsViewController" customModule="LableWhisperer" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="xdF-eY-Q9D">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="Mhb-bD-hQh">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Mhb-bD-hQh" id="f8c-eJ-d80">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="TiR-uX-Vbe" id="eKM-XI-QwM"/>
-                            <outlet property="delegate" destination="TiR-uX-Vbe" id="mGd-8J-koe"/>
-                        </connections>
-                    </tableView>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="Selected" id="QP5-ff-rTN"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Kzr-4t-IXL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="109" y="-1100"/>
-        </scene>
         <!--Scanned View Controller-->
         <scene sceneID="gfh-VM-wtO">
             <objects>
-                <tableViewController id="d3R-CN-vUf" customClass="ScannedViewController" customModule="LableWhisperer" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ScannedViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="d3R-CN-vUf" customClass="ScannedViewController" customModule="LableWhisperer" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="wMQ-NF-rSs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -218,7 +187,7 @@
         <!--Web View Controller-->
         <scene sceneID="coo-rC-PSU">
             <objects>
-                <viewController id="wYv-Y7-kwp" customClass="WebViewController" customModule="LableWhisperer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WebViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wYv-Y7-kwp" customClass="WebViewController" customModule="LableWhisperer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7OC-2x-Ysh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -320,9 +289,6 @@
             <point key="canvasLocation" x="2437.68115942029" y="-1310.4910714285713"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="QP5-ff-rTN"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

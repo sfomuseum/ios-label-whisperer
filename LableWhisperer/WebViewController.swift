@@ -22,6 +22,7 @@ class WebViewController: UIViewController, WKNavigationDelegate {
         wk_conf.processPool = wk_pool
         wk_conf.websiteDataStore = wk_store
         
+        print("REQUEST \(url)")
         let request = URLRequest(url: url!)
         
         // https://stackoverflow.com/questions/25553711/disable-magnification-gesture-in-wkwebview
