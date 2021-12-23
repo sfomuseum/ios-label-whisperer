@@ -1,59 +1,55 @@
 import UIKit
 import AccessionNumbers
 
-class ScannedViewController: UITableViewController {
+class ScannedViewController: UIViewController {
     
     var definition: Definition!
     var matches = [Match]()
+        
+    @IBOutlet var cancel_button: UIButton!
+    @IBOutlet var table_view: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // This is important - it is necessary to prevent "unable to dequeue
-        // a cell with identifier" errors even though the identifier is set
-        // in the storyboard. Dunno...
+        table_view.dataSource = self
+        table_view.delegate = self
         
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        table_view.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        // https://developer.apple.com/documentation/foundation/indexpath
-        // self.tableView.scrollToRow(at: idx_path, at: .top, animated: true)
+    @IBAction func cancel() {
+        dismiss(animated: true)
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        // NotificationCenter.default.post(name: Notification.Name("tableViewDisappearing"), object: nil)
+    // MARK: - View Controller methods
+    
+    private func showWebViewVC(url: URL) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
+        vc.url = url
+        show(vc, sender: self)
     }
-    
-    // MARK: - Segue Methods
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // if let id = segue.identifier {
-    }
-    
-    // MARK: - Table view data source
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+}
+
+extension ScannedViewController: UITableViewDataSource {
+        
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return matches.count
     }
     
-    override func tableView(_ tableView: UITableView,
-                            cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let idx = indexPath.row
         let m = self.matches[idx]
         
+        
+        let cell: UITableViewCell = self.table_view.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.textLabel!.text = "\(m.accession_number) (\(m.organization))"
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         var url: URL?
         
@@ -81,11 +77,9 @@ class ScannedViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         // dismiss(animated: true)
     }
-    
-    private func showWebViewVC(url: URL) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
-        vc.url = url
-        show(vc, sender: self)
-    }
 }
+
+extension ScannedViewController: UITableViewDelegate {
+    
+}
+

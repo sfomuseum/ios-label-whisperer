@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Choose View Controller-->
+        <!--Choose Organization View Controller-->
         <scene sceneID="XB4-DU-2Lb">
             <objects>
-                <viewController storyboardIdentifier="ChooseViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dTj-uy-Wa1" customClass="ChooseViewController" customModule="LableWhisperer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChooseOrganizationViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dTj-uy-Wa1" customClass="ChooseOrganizationViewController" customModule="LableWhisperer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XKL-Lw-kEZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -70,24 +70,86 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="emB-N2-k3O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="534.78260869565224" y="-329.46428571428572"/>
+            <point key="canvasLocation" x="671" y="-325"/>
+        </scene>
+        <!--Scanned View Controller-->
+        <scene sceneID="Qli-Hd-GAQ">
+            <objects>
+                <viewController storyboardIdentifier="ScannedViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="12K-8s-ryQ" customClass="ScannedViewController" customModule="LableWhisperer" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Bqf-Qe-QCr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ANC-DB-mv2">
+                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
+                                <items>
+                                    <navigationItem id="0JW-RZ-THS">
+                                        <barButtonItem key="rightBarButtonItem" style="plain" id="qIh-eQ-pR3">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Cpv-AP-IVB">
+                                                <rect key="frame" x="302" y="5" width="92" height="34.5"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Close"/>
+                                                <connections>
+                                                    <action selector="cancel" destination="12K-8s-ryQ" eventType="touchUpInside" id="2Ts-E3-gSW"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="wHA-Og-m42">
+                                <rect key="frame" x="0.0" y="44" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="3k9-25-qhZ">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3k9-25-qhZ" id="e4M-zr-uaX">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="aje-46-Cx4"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="wHA-Og-m42" firstAttribute="leading" secondItem="aje-46-Cx4" secondAttribute="leading" id="0lp-by-1PF"/>
+                            <constraint firstItem="wHA-Og-m42" firstAttribute="trailing" secondItem="aje-46-Cx4" secondAttribute="trailing" id="BIG-Wx-OX1"/>
+                            <constraint firstItem="ANC-DB-mv2" firstAttribute="top" secondItem="wHA-Og-m42" secondAttribute="bottom" id="G97-ko-qGE"/>
+                            <constraint firstItem="ANC-DB-mv2" firstAttribute="bottom" secondItem="aje-46-Cx4" secondAttribute="bottom" id="K0U-6l-FTc"/>
+                            <constraint firstItem="ANC-DB-mv2" firstAttribute="leading" secondItem="aje-46-Cx4" secondAttribute="leading" id="P6d-6p-9n3"/>
+                            <constraint firstItem="ANC-DB-mv2" firstAttribute="trailing" secondItem="aje-46-Cx4" secondAttribute="trailing" id="P8Q-IA-uyu"/>
+                            <constraint firstItem="wHA-Og-m42" firstAttribute="top" secondItem="aje-46-Cx4" secondAttribute="top" id="Qi6-j6-mz4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cancel_button" destination="Cpv-AP-IVB" id="f8v-fA-du0"/>
+                        <outlet property="table_view" destination="wHA-Og-m42" id="gzj-he-PVy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TaO-wb-P8c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1535" y="-325"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="LableWhisperer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Jj-hT-Bm7">
-                                <rect key="frame" x="0.0" y="752" width="414" height="56"/>
+                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <items>
                                     <navigationItem id="XQr-0P-MSD">
                                         <barButtonItem key="leftBarButtonItem" style="plain" id="rGP-zc-fkJ">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="cZV-MV-pS2">
-                                                <rect key="frame" x="20" y="11" width="92" height="34.5"/>
+                                                <rect key="frame" x="20" y="5" width="92" height="34.5"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="Choose"/>
@@ -98,7 +160,7 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="plain" id="MUr-Fb-qbu">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="RK6-Mz-d2b">
-                                                <rect key="frame" x="332" y="11" width="62" height="34.5"/>
+                                                <rect key="frame" x="332" y="5" width="62" height="34.5"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="Scan"/>
@@ -111,13 +173,13 @@
                                 </items>
                             </navigationBar>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4WI-CR-VNX">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
                                     <navigationItem title="Label Whisperer" id="FFU-eC-PVQ"/>
                                 </items>
                             </navigationBar>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="JJC-45-bBE">
-                                <rect key="frame" x="0.0" y="56" width="414" height="696"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="730"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -151,54 +213,21 @@
             </objects>
             <point key="canvasLocation" x="-193" y="-329"/>
         </scene>
-        <!--Scanned View Controller-->
-        <scene sceneID="gfh-VM-wtO">
-            <objects>
-                <tableViewController storyboardIdentifier="ScannedViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="d3R-CN-vUf" customClass="ScannedViewController" customModule="LableWhisperer" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="wMQ-NF-rSs">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="Cn7-K4-45i">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Cn7-K4-45i" id="ghG-sx-YT5">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="d3R-CN-vUf" id="4eB-uc-vsj"/>
-                            <outlet property="delegate" destination="d3R-CN-vUf" id="YRd-hZ-l1h"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="YoO-Wr-J66"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="scannedMatches" id="nif-tY-jiq"/>
-                        <segue destination="wYv-Y7-kwp" kind="showDetail" id="ZaN-z5-PqZ"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Jqd-hT-BcC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="846" y="-1052"/>
-        </scene>
         <!--Web View Controller-->
         <scene sceneID="coo-rC-PSU">
             <objects>
                 <viewController storyboardIdentifier="WebViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wYv-Y7-kwp" customClass="WebViewController" customModule="LableWhisperer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7OC-2x-Ysh">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ihw-RR-4DT">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
                                     <navigationItem title="Title" id="BR9-vm-g3B">
                                         <barButtonItem key="leftBarButtonItem" style="plain" id="nrF-fZ-YDS">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="n86-Fm-1Lj">
-                                                <rect key="frame" x="20" y="11" width="92" height="34.5"/>
+                                                <rect key="frame" x="20" y="5" width="92" height="34.5"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="Close"/>
@@ -208,7 +237,7 @@
                                 </items>
                             </navigationBar>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZFf-w9-uzT">
-                                <rect key="frame" x="0.0" y="56" width="414" height="752"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -237,56 +266,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f9u-Cg-9tI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1748" y="-1310"/>
-        </scene>
-        <!--Embed View Controller-->
-        <scene sceneID="4Ou-nC-6vB">
-            <objects>
-                <viewController id="Lbo-ov-5wg" customClass="OEmbedViewController" customModule="LableWhisperer" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="MFJ-12-VH0">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tn5-Io-ATN">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <items>
-                                    <navigationItem title="Title" id="PxJ-UK-LKK"/>
-                                </items>
-                            </navigationBar>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zsm-dN-sNe">
-                                <rect key="frame" x="0.0" y="612" width="414" height="250"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="250" id="Mc0-hL-AhE"/>
-                                </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aP7-qH-kP7">
-                                <rect key="frame" x="0.0" y="88" width="414" height="528"/>
-                            </imageView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="S05-fP-bWK"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="aP7-qH-kP7" firstAttribute="leading" secondItem="S05-fP-bWK" secondAttribute="leading" id="19S-BW-NCC"/>
-                            <constraint firstItem="Tn5-Io-ATN" firstAttribute="leading" secondItem="S05-fP-bWK" secondAttribute="leading" id="Npx-xV-AGI"/>
-                            <constraint firstItem="aP7-qH-kP7" firstAttribute="top" secondItem="Tn5-Io-ATN" secondAttribute="bottom" id="Pfk-3g-czp"/>
-                            <constraint firstAttribute="trailing" secondItem="zsm-dN-sNe" secondAttribute="trailing" id="PgW-9N-x6C"/>
-                            <constraint firstItem="Tn5-Io-ATN" firstAttribute="trailing" secondItem="S05-fP-bWK" secondAttribute="trailing" id="PnN-gY-Ew5"/>
-                            <constraint firstItem="zsm-dN-sNe" firstAttribute="bottom" secondItem="S05-fP-bWK" secondAttribute="bottom" id="T5S-tz-cLd"/>
-                            <constraint firstItem="S05-fP-bWK" firstAttribute="bottom" secondItem="aP7-qH-kP7" secondAttribute="bottom" constant="246" id="UcT-hQ-DOX"/>
-                            <constraint firstItem="zsm-dN-sNe" firstAttribute="leading" secondItem="MFJ-12-VH0" secondAttribute="leading" id="bCi-I9-Sbh"/>
-                            <constraint firstItem="Tn5-Io-ATN" firstAttribute="top" secondItem="S05-fP-bWK" secondAttribute="top" id="oI0-ia-YPP"/>
-                            <constraint firstItem="aP7-qH-kP7" firstAttribute="trailing" secondItem="S05-fP-bWK" secondAttribute="trailing" id="q5l-4p-r7Q"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="X6I-5J-uvA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2437.68115942029" y="-1310.4910714285713"/>
+            <point key="canvasLocation" x="2390" y="-329"/>
         </scene>
     </scenes>
     <resources>

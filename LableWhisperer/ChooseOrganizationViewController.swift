@@ -1,7 +1,7 @@
 import UIKit
 import AccessionNumbers
 
-class ChooseViewController: UIViewController {
+class ChooseOrganizationViewController: UIViewController {
     
     var definitions = [Definition]()
     
@@ -112,7 +112,7 @@ class ChooseViewController: UIViewController {
     }
 }
 
-extension ChooseViewController: UITableViewDataSource {
+extension ChooseOrganizationViewController: UITableViewDataSource {
         
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return definitions.count
@@ -138,6 +138,6 @@ extension ChooseViewController: UITableViewDataSource {
     }
 }
 
-extension ChooseViewController: UITableViewDelegate {
+extension ChooseOrganizationViewController: UITableViewDelegate {
     
 }
