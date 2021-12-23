@@ -24,11 +24,9 @@ class WebViewController: UIViewController, WKNavigationDelegate {
         let request = URLRequest(url: url!)
                 
         web_view = WKWebView(frame: .zero, configuration: wk_conf)
-        // web_view.navigationDelegate = self
-        // view = web_view
+        web_view.navigationDelegate = self
+        view = web_view
         
-        
-        view.addSubview(web_view)
         web_view.load(request)
     }
     

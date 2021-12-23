@@ -131,14 +131,6 @@ class ViewController: UIViewController {
     
     @IBAction func scan(_ sender: UIControl) {
         
-        let url = URL(string: "https://collection.sfomuseum.org/objects/1511938167")
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
-        vc.url = url!
-        show(vc, sender: self)
-        return
-        
         let documentCameraViewController = VNDocumentCameraViewController()
         documentCameraViewController.delegate = self
         present(documentCameraViewController, animated: true)
@@ -181,7 +173,7 @@ class ViewController: UIViewController {
         switch rsp {
         case .failure(let error):
             print("Failed to extract accession numbers from text, \(error).")
-        case .success(let results):            
+        case .success(let results):
             showScannedVC(results: results)
         }
     }
@@ -189,7 +181,7 @@ class ViewController: UIViewController {
 
 extension ViewController: VNDocumentCameraViewControllerDelegate {
     
-    func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {        
+    func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
         
         controller.dismiss(animated: true) {
             DispatchQueue.global(qos: .userInitiated).async {

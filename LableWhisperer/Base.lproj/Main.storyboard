@@ -238,7 +238,7 @@
                                                 <rect key="frame" x="302" y="5" width="92" height="34.5"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" title="Close"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Close" titleAlignment="center"/>
                                                 <connections>
                                                     <action selector="close" destination="wYv-Y7-kwp" eventType="touchUpInside" id="bke-Km-BIi"/>
                                                 </connections>
@@ -269,7 +269,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f9u-Cg-9tI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2389.8550724637685" y="-329.46428571428572"/>
+            <point key="canvasLocation" x="3300.0000000000005" y="-329.46428571428572"/>
         </scene>
     </scenes>
     <resources>
