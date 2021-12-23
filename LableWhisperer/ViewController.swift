@@ -111,9 +111,17 @@ class ViewController: UIViewController {
         return .success(())
     }
     
+    private func showChooseVC() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "ChooseViewController") as! ChooseViewController
+        // let vc = ChooseViewController()
+        print("SHOW")
+         present(vc, animated: true, completion: nil)
+        
+    }
+    
     @IBAction func choose(_ sender: UIControl) {
-        let vc = DefinitionsViewController()
-        present(vc, animated: true, completion: nil)
+        showChooseVC()
         return
     }
     
@@ -148,8 +156,9 @@ class ViewController: UIViewController {
         }
         
         guard self.current != nil else {            
-            let vc = DefinitionsViewController()
-            present(vc, animated: true, completion: nil)
+            // let vc = DefinitionsViewController()
+            let vc = ChooseViewController()
+            show(vc, sender: self)
             return
         }
         
@@ -162,10 +171,12 @@ class ViewController: UIViewController {
         case .failure(let error):
             print("Failed to extract accession numbers from text, \(error).")
         case .success(let results):
+            
             let vc = ScannedViewController()
             vc.matches = results
             vc.definition = self.current
-            present(vc, animated: true, completion: nil)
+            //present(vc, animated: true, completion: nil)
+            show(vc, sender: self)
         }
     }
 }

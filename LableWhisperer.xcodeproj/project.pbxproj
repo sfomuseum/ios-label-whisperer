@@ -22,6 +22,7 @@
 		4AC319D1276ACB02002F7956 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC319D0276ACB02002F7956 /* WebViewController.swift */; };
 		4AC319D3276D7378002F7956 /* OEmbedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC319D2276D7378002F7956 /* OEmbedViewController.swift */; };
 		4AC319D5276D73A5002F7956 /* IIIFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC319D4276D73A5002F7956 /* IIIFViewController.swift */; };
+		4ADFE4DB2774B670006F35F9 /* ChooseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADFE4DA2774B670006F35F9 /* ChooseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		4AC319D0276ACB02002F7956 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		4AC319D2276D7378002F7956 /* OEmbedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OEmbedViewController.swift; sourceTree = "<group>"; };
 		4AC319D4276D73A5002F7956 /* IIIFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IIIFViewController.swift; sourceTree = "<group>"; };
+		4ADFE4DA2774B670006F35F9 /* ChooseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 				4A7928A2273F286400C92087 /* Info.plist */,
 				4A04F75B274F0CBE00B40B82 /* ScannedViewController.swift */,
 				4A3D70C6275463490043C67F /* DefinitionsViewController.swift */,
+				4ADFE4DA2774B670006F35F9 /* ChooseViewController.swift */,
 			);
 			path = LableWhisperer;
 			sourceTree = "<group>";
@@ -175,6 +178,7 @@
 				4AC319D5276D73A5002F7956 /* IIIFViewController.swift in Sources */,
 				4AC319D3276D7378002F7956 /* OEmbedViewController.swift in Sources */,
 				4A792899273F286100C92087 /* ViewController.swift in Sources */,
+				4ADFE4DB2774B670006F35F9 /* ChooseViewController.swift in Sources */,
 				4A3D70C7275463490043C67F /* DefinitionsViewController.swift in Sources */,
 				4A04F75C274F0CBE00B40B82 /* ScannedViewController.swift in Sources */,
 				4A792895273F286100C92087 /* AppDelegate.swift in Sources */,

@@ -8,6 +8,51 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Choose View Controller-->
+        <scene sceneID="XB4-DU-2Lb">
+            <objects>
+                <viewController storyboardIdentifier="ChooseViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dTj-uy-Wa1" customClass="ChooseViewController" customModule="LableWhisperer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XKL-Lw-kEZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="img-7g-vsz">
+                                <rect key="frame" x="0.0" y="769" width="414" height="44"/>
+                                <items>
+                                    <navigationItem title="Choose" id="ldm-8g-7ED">
+                                        <barButtonItem key="rightBarButtonItem" style="plain" id="MN3-Pc-7r2">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="UIM-V2-FhX">
+                                                <rect key="frame" x="302" y="5" width="92" height="34.5"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Cancel"/>
+                                                <connections>
+                                                    <action selector="cancel" destination="dTj-uy-Wa1" eventType="touchUpInside" id="KgN-b7-dbv"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="74L-nE-sML"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="img-7g-vsz" firstAttribute="trailing" secondItem="74L-nE-sML" secondAttribute="trailing" id="MXt-CY-ZYI"/>
+                            <constraint firstItem="img-7g-vsz" firstAttribute="bottom" secondItem="74L-nE-sML" secondAttribute="bottom" id="Yxo-0Q-QSd"/>
+                            <constraint firstItem="img-7g-vsz" firstAttribute="leading" secondItem="74L-nE-sML" secondAttribute="leading" id="bDD-TW-QhT"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="choose_button" destination="UIM-V2-FhX" id="W3T-Cg-bLd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="emB-N2-k3O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="508.69565217391306" y="-407.14285714285711"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -85,7 +130,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="343.47826086956525" y="-342.1875"/>
+            <point key="canvasLocation" x="-193" y="-329"/>
         </scene>
         <!--Definitions View Controller-->
         <scene sceneID="gPJ-Cx-b1B">
@@ -116,7 +161,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kzr-4t-IXL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-259" y="-1061"/>
+            <point key="canvasLocation" x="109" y="-1100"/>
         </scene>
         <!--Scanned View Controller-->
         <scene sceneID="gfh-VM-wtO">
@@ -257,7 +302,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="nif-tY-jiq"/>
+        <segue reference="QP5-ff-rTN"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="labelColor">
