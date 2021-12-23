@@ -14,7 +14,7 @@ import AccessionNumbers
 // https://developer.apple.com/documentation/vision/structuring_recognized_text_on_a_document
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet var scanned_text: UITextView!
     
     @IBOutlet var scan_button: UIButton!
@@ -26,7 +26,7 @@ class ViewController: UIViewController {
     
     // var resultsViewController: (UIViewController & RecognizedTextDataSource)?
     var textRecognitionRequest = VNRecognizeTextRequest()
-        
+    
     var current: Definition?
     
     var opQueue = OperationQueue()
@@ -37,10 +37,10 @@ class ViewController: UIViewController {
         self.setupNotificationHandlers()
         
         textRecognitionRequest = VNRecognizeTextRequest(completionHandler: { (request, error) in
-
+            
             if let results = request.results, !results.isEmpty {
                 if let requestResults = request.results as? [VNRecognizedTextObservation] {
-			DispatchQueue.main.async {
+                    DispatchQueue.main.async {
                         self.addRecognizedText(recognizedText: requestResults)
                     }
                 }
@@ -48,11 +48,11 @@ class ViewController: UIViewController {
         })
         
         textRecognitionRequest.recognitionLevel = .accurate
-            textRecognitionRequest.usesLanguageCorrection = true
+        textRecognitionRequest.usesLanguageCorrection = true
         
         self.scan_button.isEnabled = false
     }
-
+    
     // MARK: - Alert Methods
     
     private func showAlert(label: String, message: String){
@@ -99,8 +99,8 @@ class ViewController: UIViewController {
             encoder.outputFormatting = .prettyPrinted
             
             do {
-            let data = try encoder.encode(self.current!)
-            
+                let data = try encoder.encode(self.current!)
+                
                 self.current_definition.text = String(data: data, encoding: .utf8)!
                 
             } catch (let error){
@@ -129,26 +129,35 @@ class ViewController: UIViewController {
         showChooseVC()
     }
     
-        @IBAction func scan(_ sender: UIControl) {
-            let documentCameraViewController = VNDocumentCameraViewController()
-            documentCameraViewController.delegate = self
-            present(documentCameraViewController, animated: true)
+    @IBAction func scan(_ sender: UIControl) {
+        
+        let url = URL(string: "https://collection.sfomuseum.org/objects/1511938167")
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
+        vc.url = url!
+        show(vc, sender: self)
+        return
+        
+        let documentCameraViewController = VNDocumentCameraViewController()
+        documentCameraViewController.delegate = self
+        present(documentCameraViewController, animated: true)
+    }
+    
+    func processImage(image: UIImage) {
+        guard let cgImage = image.cgImage else {
+            print("Failed to get cgimage from input image")
+            return
         }
         
-        func processImage(image: UIImage) {
-            guard let cgImage = image.cgImage else {
-                print("Failed to get cgimage from input image")
-                return
-            }
-            
-            let handler = VNImageRequestHandler(cgImage: cgImage, options: [:])
-            do {
-                try handler.perform([textRecognitionRequest])
-            } catch {
-                print(error)
-            }
+        let handler = VNImageRequestHandler(cgImage: cgImage, options: [:])
+        do {
+            try handler.perform([textRecognitionRequest])
+        } catch {
+            print(error)
         }
-
+    }
+    
     func addRecognizedText(recognizedText: [VNRecognizedTextObservation]) {
         // Create a full transcript to run analysis on.
         var transcript = ""
