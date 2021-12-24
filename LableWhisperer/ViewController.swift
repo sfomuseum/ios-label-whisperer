@@ -129,6 +129,7 @@ class ViewController: UIViewController {
         let vc = storyboard.instantiateViewController(withIdentifier: "ScannedViewController") as! ScannedViewController
         vc.matches = results
         vc.definition = self.current
+        vc.collection = self.collection
         show(vc, sender: self)
     }
     

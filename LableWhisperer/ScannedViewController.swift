@@ -3,9 +3,10 @@ import AccessionNumbers
 
 class ScannedViewController: UIViewController {
     
+    var collection: Collection?
     var definition: Definition!
     var matches = [Match]()
-        
+    
     var current_match: Match!
     
     @IBOutlet var cancel_button: UIButton!
@@ -35,7 +36,7 @@ class ScannedViewController: UIViewController {
 }
 
 extension ScannedViewController: UITableViewDataSource {
-        
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return matches.count
     }
@@ -67,7 +68,7 @@ extension ScannedViewController: UITableViewDataSource {
         var url: URL?
         
         let m = matches[indexPath.row]
-
+        
         if definition.object_url != nil {
             
             let object_rsp = definition.ObjectURL(accession_number: m.accession_number)
@@ -102,25 +103,41 @@ extension ScannedViewController: UIContextMenuInteractionDelegate  {
     
     func contextMenuInteraction(_ interaction: UIContextMenuInteraction,
                                 configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
-   
+        
+        let organization_url = self.definition.organization_url
         let accession_number = self.current_match.accession_number
         
         return UIContextMenuConfiguration(identifier: nil,
                                           previewProvider: nil,
                                           actionProvider: {
-                suggestedActions in
+            suggestedActions in
             
             var actions = [UIAction]()
             
             // Collect object action
             
-            let collectAction =
+            if self.collection != nil {
+                
+                let collectAction =
                 UIAction(title: NSLocalizedString("Collect this object", comment: ""),
                          image: UIImage(systemName: "arrow.up.square")) { action in
-                    self.Collect()
+                    
+                    let collect_rsp = self.collection?.Collect(organization: organization_url, accession_number: accession_number)
+                    
+                    // To do: Feedback, one way or another
+                    
+                    switch collect_rsp {
+                    case .failure(let error):
+                        print("SAD \(error)")
+                    case .success:
+                        print("OKAY")
+                    case .none: // Why does this need to be here? Is this new...?
+                        ()
+                    }
                 }
-                 
-            actions.append(collectAction)
+                
+                actions.append(collectAction)
+            }
             
             // Open webpage action
             
@@ -135,11 +152,11 @@ extension ScannedViewController: UIContextMenuInteractionDelegate  {
                 case .success(let url):
                     
                     let openAction =
-                        UIAction(title: NSLocalizedString("Open webpage", comment: ""),
-                                 image: UIImage(systemName: "arrow.up.square")) { action in
-                            self.showWebViewVC(url: url)
-                        }
-                         
+                    UIAction(title: NSLocalizedString("Open webpage", comment: ""),
+                             image: UIImage(systemName: "arrow.up.square")) { action in
+                        self.showWebViewVC(url: url)
+                    }
+                    
                     actions.append(openAction)
                 }
             }
@@ -148,12 +165,12 @@ extension ScannedViewController: UIContextMenuInteractionDelegate  {
             
             // IIIF action
             
+            if actions.count == 0 {
+                return nil
+            }
+            
             return UIMenu(title: "", children: actions)
         })
-    }
-    
-    func Collect(){
-        print("ACTION")
     }
     
 }

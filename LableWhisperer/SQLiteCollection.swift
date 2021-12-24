@@ -21,6 +21,16 @@ public class SQLiteCollection: Collection {
         let root = paths[0]
         
         let db_uri = root.appendingPathComponent(self.db_name)
+
+        /*
+        let wtf = db_uri.absoluteString.replacingOccurrences(of: "file://", with: "")
+        print(wtf)
+        
+        if fm.fileExists(atPath: wtf) {
+            print("DELET")
+            try fm.removeItem(atPath: wtf)
+        }
+        */
         
         db = FMDatabase(url: db_uri)
         
@@ -35,14 +45,12 @@ public class SQLiteCollection: Collection {
             throw error
         case .success:
             ()
-        }
-        
-        print("TABLE YO", db_uri)
+        }        
     }
 
     private func createTable() -> Result<Bool, Error> {
         
-        let sql = "CREATE TABLE IF NOT EXISTS collection(organization TEXT, accession number TEXT);" +
+        let sql = "CREATE TABLE IF NOT EXISTS collection(organization TEXT, accession_number TEXT);" +
             "CREATE UNIQUE INDEX by_pair ON collection(organization, accession_number);"
         
         do {
@@ -57,7 +65,10 @@ public class SQLiteCollection: Collection {
     public func Collect(organization: String, accession_number: String) -> Result<Bool, Error> {
         
         do {
-            let sql = "UPSERT INTO collection(organization, accession_number) VALUES(?,?)"
+            let sql = "REPLACE INTO collection(organization, accession_number) VALUES(?,?)"
+            
+            print("\(sql) \(organization) \(accession_number)")
+            
             try db.executeUpdate(sql, values: [organization, accession_number])
         } catch (let error){
             return .failure(error)
