@@ -122,7 +122,15 @@ extension ScannedViewController: UIContextMenuInteractionDelegate  {
                 UIAction(title: NSLocalizedString("Collect this object", comment: ""),
                          image: UIImage(systemName: "arrow.up.square")) { action in
                     
-                    let collect_rsp = self.collection?.Collect(organization: organization_url, accession_number: accession_number)
+                    let created = Int64(NSDate().timeIntervalSince1970)
+                    
+                    let record = CollectionRecord(
+                        organization: organization_url,
+                        accession_number: accession_number,
+                        created: created
+                    )
+                    
+                    let collect_rsp = self.collection?.Collect(record: record)
                     
                     // To do: Feedback, one way or another
                     

@@ -21,6 +21,7 @@
 		4AD719182776288B00D3703D /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD719172776288B00D3703D /* Collection.swift */; };
 		4AD7191A2776298F00D3703D /* SQLiteCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD719192776298F00D3703D /* SQLiteCollection.swift */; };
 		4AD7191D27762A8F00D3703D /* FMDB in Frameworks */ = {isa = PBXBuildFile; productRef = 4AD7191C27762A8F00D3703D /* FMDB */; };
+		4AD7191F277635DF00D3703D /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD7191E277635DF00D3703D /* CollectionViewController.swift */; };
 		4ADFE4DB2774B670006F35F9 /* ChooseOrganizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADFE4DA2774B670006F35F9 /* ChooseOrganizationViewController.swift */; };
 		4ADFE4DD2774CBF4006F35F9 /* ScannedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADFE4DC2774CBF4006F35F9 /* ScannedViewController.swift */; };
 /* End PBXBuildFile section */
@@ -40,6 +41,7 @@
 		4AC319D0276ACB02002F7956 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		4AD719172776288B00D3703D /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		4AD719192776298F00D3703D /* SQLiteCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteCollection.swift; sourceTree = "<group>"; };
+		4AD7191E277635DF00D3703D /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		4ADFE4DA2774B670006F35F9 /* ChooseOrganizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseOrganizationViewController.swift; sourceTree = "<group>"; };
 		4ADFE4DC2774CBF4006F35F9 /* ScannedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -88,6 +90,7 @@
 				4A79289F273F286400C92087 /* LaunchScreen.storyboard */,
 				4A7928A2273F286400C92087 /* Info.plist */,
 				4ADFE4DC2774CBF4006F35F9 /* ScannedViewController.swift */,
+				4AD7191E277635DF00D3703D /* CollectionViewController.swift */,
 				4AD719172776288B00D3703D /* Collection.swift */,
 				4AD719192776298F00D3703D /* SQLiteCollection.swift */,
 				4ADFE4DA2774B670006F35F9 /* ChooseOrganizationViewController.swift */,
@@ -180,6 +183,7 @@
 				4ADFE4DB2774B670006F35F9 /* ChooseOrganizationViewController.swift in Sources */,
 				4A792895273F286100C92087 /* AppDelegate.swift in Sources */,
 				4AD7191A2776298F00D3703D /* SQLiteCollection.swift in Sources */,
+				4AD7191F277635DF00D3703D /* CollectionViewController.swift in Sources */,
 				4AC319D1276ACB02002F7956 /* WebViewController.swift in Sources */,
 				4ADFE4DD2774CBF4006F35F9 /* ScannedViewController.swift in Sources */,
 				4A792897273F286100C92087 /* SceneDelegate.swift in Sources */,

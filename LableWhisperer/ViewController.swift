@@ -20,6 +20,7 @@ class ViewController: UIViewController {
     @IBOutlet var scan_button: UIButton!
     @IBOutlet var choose_button: UIButton!
     
+    @IBOutlet var collection_button: UIButton!
     @IBOutlet var current_organization: UINavigationItem!
     
     @IBOutlet var current_definition: UITextView!
@@ -133,8 +134,19 @@ class ViewController: UIViewController {
         show(vc, sender: self)
     }
     
+    private func showCollectionVC(){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "CollectionViewController") as! CollectionViewController
+        vc.collection = self.collection
+        show(vc, sender: self)
+    }
+    
     @IBAction func choose(_ sender: UIControl) {
         showChooseVC()
+    }
+    
+    @IBAction func collection(_ sender: UIControl) {
+        showCollectionVC()
     }
     
     @IBAction func scan(_ sender: UIControl) {

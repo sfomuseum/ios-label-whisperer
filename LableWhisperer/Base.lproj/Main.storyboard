@@ -72,6 +72,68 @@
             </objects>
             <point key="canvasLocation" x="671" y="-325"/>
         </scene>
+        <!--Collection View Controller-->
+        <scene sceneID="JGb-Tw-chd">
+            <objects>
+                <viewController storyboardIdentifier="CollectionViewController" id="mjN-6A-rBU" customClass="CollectionViewController" customModule="LableWhisperer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HMd-NE-MJg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cxK-18-Mpx">
+                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
+                                <items>
+                                    <navigationItem title="Collection" id="3so-92-yUW">
+                                        <barButtonItem key="rightBarButtonItem" style="plain" id="b7M-N3-XHl">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="RMg-CQ-0lK">
+                                                <rect key="frame" x="302" y="5" width="92" height="34.5"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Close"/>
+                                                <connections>
+                                                    <action selector="close" destination="mjN-6A-rBU" eventType="touchUpInside" id="Isc-57-FVb"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="N6L-Le-vdu">
+                                <rect key="frame" x="0.0" y="44" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="TSj-1o-7NI">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TSj-1o-7NI" id="6VK-aL-rOV">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Gos-BE-uJh"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="N6L-Le-vdu" firstAttribute="leading" secondItem="Gos-BE-uJh" secondAttribute="leading" id="KVY-bB-8Yf"/>
+                            <constraint firstItem="cxK-18-Mpx" firstAttribute="top" secondItem="N6L-Le-vdu" secondAttribute="bottom" id="Vsi-wY-pzt"/>
+                            <constraint firstItem="cxK-18-Mpx" firstAttribute="leading" secondItem="Gos-BE-uJh" secondAttribute="leading" id="ZMF-Hb-pfz"/>
+                            <constraint firstItem="cxK-18-Mpx" firstAttribute="trailing" secondItem="Gos-BE-uJh" secondAttribute="trailing" id="lzX-RX-ISj"/>
+                            <constraint firstItem="N6L-Le-vdu" firstAttribute="top" secondItem="Gos-BE-uJh" secondAttribute="top" id="md0-Ss-e5t"/>
+                            <constraint firstItem="N6L-Le-vdu" firstAttribute="trailing" secondItem="Gos-BE-uJh" secondAttribute="trailing" id="ttX-6W-6WZ"/>
+                            <constraint firstItem="cxK-18-Mpx" firstAttribute="bottom" secondItem="Gos-BE-uJh" secondAttribute="bottom" id="vn5-QI-k8x"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="close_button" destination="RMg-CQ-0lK" id="lz6-M9-cLI"/>
+                        <outlet property="table_view" destination="N6L-Le-vdu" id="rO0-iY-MRP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1v2-4y-AcX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="763.768115942029" y="535.71428571428567"/>
+        </scene>
         <!--Scanned View Controller-->
         <scene sceneID="Qli-Hd-GAQ">
             <objects>
@@ -175,7 +237,19 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4WI-CR-VNX">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
-                                    <navigationItem title="Label Whisperer" id="FFU-eC-PVQ"/>
+                                    <navigationItem title="Label Whisperer" id="FFU-eC-PVQ">
+                                        <barButtonItem key="rightBarButtonItem" style="plain" id="ydL-YI-QLi">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="69n-gl-Hes">
+                                                <rect key="frame" x="293.5" y="5" width="100.5" height="34.5"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Collection"/>
+                                                <connections>
+                                                    <action selector="collection:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ag4-U4-tex"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="JJC-45-bBE">
@@ -204,6 +278,7 @@
                     <navigationItem key="navigationItem" id="35A-gE-8jH"/>
                     <connections>
                         <outlet property="choose_button" destination="cZV-MV-pS2" id="3C3-sw-LUw"/>
+                        <outlet property="collection_button" destination="69n-gl-Hes" id="USj-ZD-WPq"/>
                         <outlet property="current_definition" destination="JJC-45-bBE" id="ird-LP-ySl"/>
                         <outlet property="current_organization" destination="FFU-eC-PVQ" id="GsK-Xj-pWu"/>
                         <outlet property="scan_button" destination="RK6-Mz-d2b" id="qTl-J9-sb1"/>

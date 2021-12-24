@@ -21,7 +21,10 @@ Currently the application:
 * Display a `Scan` button which launches a `VNRecognizedTextObservation` process.
 * Call the `ExtractFromText` method (from the [swift-accession-numbers](https://github.com/sfomuseum/accession-numbers) package with the text results of the `VNRecognizedTextObservation` process.
 * Display a "table view" with the resulting matches.
-* When a matching accession number is selected, the application will try to resolve its corresponding webpage URL and load that URL in a new view controller.
+* When a matching accession number is selected, the application will display a contextual menu which will:
+* Allow that accession number to be "collected"
+* Try to resolve its corresponding webpage URL and, if successful, load that URL in a new view controller.
+* It is also possible to display the list of accession numbers that have been collected (but that's all so far)
 
 ## How does it work
 
@@ -75,9 +78,7 @@ Next steps are:
 
 * Controls to refresh the definition files in the `data.bundle` folder (or equivalent) without the need to recompile the application.
 
-* Consider bundling the (SQLite) lookup tables produced by the [fake accession number APIs project](https://github.com/aaronland/fake-accession-number-apis) and use those to match accession numbers to their corresponding object URL for institutions that don't resolve accession numbers to objects (web pages).
-
-* Saving things, I guess. Maybe something along the lines of the ["wunderkammer" application](https://www.aaronland.info/weblog/2020/07/07/action/#wunderkammer).
+* More controls for working with collected objects.
 
 ## Help wanted
 
