@@ -6,6 +6,8 @@ class ScannedViewController: UIViewController {
     var definition: Definition!
     var matches = [Match]()
         
+    var current_match: Match!
+    
     @IBOutlet var cancel_button: UIButton!
     @IBOutlet var table_view: UITableView!
     
@@ -51,6 +53,17 @@ extension ScannedViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        guard let row = tableView.cellForRow(at: indexPath) else {
+            // To do: alert
+            return
+        }
+        
+        self.current_match = matches[indexPath.row]
+        
+        let interaction = UIContextMenuInteraction(delegate: self)
+        row.addInteraction(interaction)
+        return
+        
         var url: URL?
         
         let m = matches[indexPath.row]
@@ -83,3 +96,64 @@ extension ScannedViewController: UITableViewDelegate {
     
 }
 
+// MARK: - Context Menu methods
+
+extension ScannedViewController: UIContextMenuInteractionDelegate  {
+    
+    func contextMenuInteraction(_ interaction: UIContextMenuInteraction,
+                                configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
+   
+        let accession_number = self.current_match.accession_number
+        
+        return UIContextMenuConfiguration(identifier: nil,
+                                          previewProvider: nil,
+                                          actionProvider: {
+                suggestedActions in
+            
+            var actions = [UIAction]()
+            
+            // Collect object action
+            
+            let collectAction =
+                UIAction(title: NSLocalizedString("Collect this object", comment: ""),
+                         image: UIImage(systemName: "arrow.up.square")) { action in
+                    self.Collect()
+                }
+                 
+            actions.append(collectAction)
+            
+            // Open webpage action
+            
+            if self.definition.object_url != nil {
+                
+                let object_rsp = self.definition.ObjectURL(accession_number: accession_number)
+                
+                switch object_rsp {
+                case .failure(let error):
+                    print("Failed to derive object URL for accession number \(accession_number), \(error).")
+                    
+                case .success(let url):
+                    
+                    let openAction =
+                        UIAction(title: NSLocalizedString("Open webpage", comment: ""),
+                                 image: UIImage(systemName: "arrow.up.square")) { action in
+                            self.showWebViewVC(url: url)
+                        }
+                         
+                    actions.append(openAction)
+                }
+            }
+            
+            // oEmbed action
+            
+            // IIIF action
+            
+            return UIMenu(title: "", children: actions)
+        })
+    }
+    
+    func Collect(){
+        print("ACTION")
+    }
+    
+}

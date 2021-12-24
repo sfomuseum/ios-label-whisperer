@@ -129,6 +129,19 @@ extension ChooseOrganizationViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        // TBD... maybe do context menus here? maybe not, though
+        // It seems like unnecessary fluff
+        
+        /*
+        guard let row = tableView.cellForRow(at: indexPath) else {
+            return
+        }
+        
+        let interaction = UIContextMenuInteraction(delegate: self)
+        row.addInteraction(interaction)
+        return
+        */
+        
         let def = definitions[indexPath.row]
 
         NotificationCenter.default.post(name: Notification.Name("setCurrentOrganization"), object: def)
