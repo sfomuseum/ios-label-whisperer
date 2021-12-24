@@ -27,12 +27,19 @@ class ViewController: UIViewController {
     // var resultsViewController: (UIViewController & RecognizedTextDataSource)?
     var textRecognitionRequest = VNRecognizeTextRequest()
     
+    var collection: Collection?
     var current: Definition?
     
     var opQueue = OperationQueue()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        do {
+            collection = try SQLiteCollection()
+        } catch (let error) {            
+            print("NO COLLECTION BECAUSE: \(error)")
+        }
         
         self.setupNotificationHandlers()
         

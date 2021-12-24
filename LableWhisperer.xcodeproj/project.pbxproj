@@ -18,6 +18,9 @@
 		4A8AC352274484F9002F4C7C /* AccessionNumbers in Frameworks */ = {isa = PBXBuildFile; productRef = 4A8AC351274484F9002F4C7C /* AccessionNumbers */; };
 		4A8AC354274487C2002F4C7C /* sfomuseum.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A8AC353274487C2002F4C7C /* sfomuseum.json */; };
 		4AC319D1276ACB02002F7956 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC319D0276ACB02002F7956 /* WebViewController.swift */; };
+		4AD719182776288B00D3703D /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD719172776288B00D3703D /* Collection.swift */; };
+		4AD7191A2776298F00D3703D /* SQLiteCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD719192776298F00D3703D /* SQLiteCollection.swift */; };
+		4AD7191D27762A8F00D3703D /* FMDB in Frameworks */ = {isa = PBXBuildFile; productRef = 4AD7191C27762A8F00D3703D /* FMDB */; };
 		4ADFE4DB2774B670006F35F9 /* ChooseOrganizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADFE4DA2774B670006F35F9 /* ChooseOrganizationViewController.swift */; };
 		4ADFE4DD2774CBF4006F35F9 /* ScannedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADFE4DC2774CBF4006F35F9 /* ScannedViewController.swift */; };
 /* End PBXBuildFile section */
@@ -35,6 +38,8 @@
 		4A7928A8273F311E00C92087 /* RecognizedTextDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizedTextDataSource.swift; sourceTree = "<group>"; };
 		4A8AC353274487C2002F4C7C /* sfomuseum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sfomuseum.json; sourceTree = "<group>"; };
 		4AC319D0276ACB02002F7956 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		4AD719172776288B00D3703D /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
+		4AD719192776298F00D3703D /* SQLiteCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteCollection.swift; sourceTree = "<group>"; };
 		4ADFE4DA2774B670006F35F9 /* ChooseOrganizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseOrganizationViewController.swift; sourceTree = "<group>"; };
 		4ADFE4DC2774CBF4006F35F9 /* ScannedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -45,6 +50,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A8AC352274484F9002F4C7C /* AccessionNumbers in Frameworks */,
+				4AD7191D27762A8F00D3703D /* FMDB in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +88,8 @@
 				4A79289F273F286400C92087 /* LaunchScreen.storyboard */,
 				4A7928A2273F286400C92087 /* Info.plist */,
 				4ADFE4DC2774CBF4006F35F9 /* ScannedViewController.swift */,
+				4AD719172776288B00D3703D /* Collection.swift */,
+				4AD719192776298F00D3703D /* SQLiteCollection.swift */,
 				4ADFE4DA2774B670006F35F9 /* ChooseOrganizationViewController.swift */,
 			);
 			path = LableWhisperer;
@@ -105,6 +113,7 @@
 			name = LableWhisperer;
 			packageProductDependencies = (
 				4A8AC351274484F9002F4C7C /* AccessionNumbers */,
+				4AD7191C27762A8F00D3703D /* FMDB */,
 			);
 			productName = LableWhisperer;
 			productReference = 4A792891273F286100C92087 /* LableWhisperer.app */;
@@ -136,6 +145,7 @@
 			mainGroup = 4A792888273F286100C92087;
 			packageReferences = (
 				4A8AC350274484F9002F4C7C /* XCRemoteSwiftPackageReference "swift-accession-numbers" */,
+				4AD7191B27762A8E00D3703D /* XCRemoteSwiftPackageReference "fmdb" */,
 			);
 			productRefGroup = 4A792892273F286100C92087 /* Products */;
 			projectDirPath = "";
@@ -169,10 +179,12 @@
 				4A792899273F286100C92087 /* ViewController.swift in Sources */,
 				4ADFE4DB2774B670006F35F9 /* ChooseOrganizationViewController.swift in Sources */,
 				4A792895273F286100C92087 /* AppDelegate.swift in Sources */,
+				4AD7191A2776298F00D3703D /* SQLiteCollection.swift in Sources */,
 				4AC319D1276ACB02002F7956 /* WebViewController.swift in Sources */,
 				4ADFE4DD2774CBF4006F35F9 /* ScannedViewController.swift in Sources */,
 				4A792897273F286100C92087 /* SceneDelegate.swift in Sources */,
 				4A7928A9273F311E00C92087 /* RecognizedTextDataSource.swift in Sources */,
+				4AD719182776288B00D3703D /* Collection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,6 +414,14 @@
 				minimumVersion = 0.0.1;
 			};
 		};
+		4AD7191B27762A8E00D3703D /* XCRemoteSwiftPackageReference "fmdb" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ccgus/fmdb";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -409,6 +429,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4A8AC350274484F9002F4C7C /* XCRemoteSwiftPackageReference "swift-accession-numbers" */;
 			productName = AccessionNumbers;
+		};
+		4AD7191C27762A8F00D3703D /* FMDB */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4AD7191B27762A8E00D3703D /* XCRemoteSwiftPackageReference "fmdb" */;
+			productName = FMDB;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
