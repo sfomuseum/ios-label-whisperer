@@ -104,19 +104,45 @@ extension CollectionViewController: UIContextMenuInteractionDelegate  {
                                           actionProvider: {
             suggestedActions in
             
-            var actions = [UIAction]()                       
+            var actions = [UIAction]()
             
             if self.current_selection != nil {
-                
-                /*
-                 Thread 1: "Invalid update: invalid number of rows in section 0. The number of rows contained in an existing section after the update (1) must be equal to the number of rows contained in that section before the update (1), plus or minus the number of rows inserted or deleted from that section (0 inserted, 1 deleted) and plus or minus the number of rows moved into or out of that section (0 moved in, 0 moved out). Table view: <UITableView: 0x7f95f186c000; frame = (0 0; 390 697); clipsToBounds = YES; autoresize = RM+BM; gestureRecognizers = <NSArray: 0x600002e21410>; layer = <CALayer: 0x600002001300>; contentOffset: {0, 0}; contentSize: {390, 44}; adjustedContentInset: {0, 0, 0, 0}; dataSource: <LableWhisperer.CollectionViewController: 0x7f95f0417a20>>"
-                 */
                 
                 let remove_action = UIAction(title: NSLocalizedString("Remove this object", comment: ""),
                                              image: UIImage(systemName: "arrow.down.square")) { action in
                     
-                    self.table_view.deleteRows(at: [self.current_selection!], with: .automatic)
-                    self.current_selection = nil
+                    let idx = self.current_selection?.row
+                    
+                    /* Should we need to refetch the record? Probably not.. */
+                    
+                    let record_rsp = self.collection?.RecordFromOffset(offset: idx!)
+                    var reload = false
+                    
+                    switch record_rsp {
+                    case .failure(let error):
+                        print("\(error)")
+                        
+                    case .success(let record):
+                        
+                        let remove_rsp = self.collection?.Remove(record: record)
+                        
+                        switch remove_rsp {
+                        case .failure(let error):
+                            print(error)
+                        case .success:
+                            reload = true
+                        case .none:
+                            ()
+                        }
+                        
+                    case .none:
+                        ()
+                    }
+                   
+                    if reload {
+                        self.current_selection = nil
+                        self.table_view.reloadData()
+                    }
                 }
                 
                 

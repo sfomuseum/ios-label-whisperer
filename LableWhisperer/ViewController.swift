@@ -38,12 +38,14 @@ class ViewController: UIViewController {
         
         do {
             collection = try SQLiteCollection()
-        } catch (let error) {            
+        } catch (let error) {
+            // To do: Alert or at least notify
             print("NO COLLECTION BECAUSE: \(error)")
         }
         
         // For debugging
         
+        /*
         if collection != nil {            
             let org = "https://collection.sfomuseum.org"
             let num = "2005.132.013.008"
@@ -51,6 +53,7 @@ class ViewController: UIViewController {
             self.collection?.Collect(record: record)
             
         }
+        */
         
         self.setupNotificationHandlers()
         
@@ -165,6 +168,8 @@ class ViewController: UIViewController {
         documentCameraViewController.delegate = self
         present(documentCameraViewController, animated: true)
     }
+    
+    // MARK: - Image Processing methods
     
     func processImage(image: UIImage) {
         guard let cgImage = image.cgImage else {

@@ -24,7 +24,7 @@ Currently the application:
 * When a matching accession number is selected, the application will display a contextual menu which will:
 * Allow that accession number to be "collected"
 * Try to resolve its corresponding webpage URL and, if successful, load that URL in a new view controller.
-* It is also possible to display the list of accession numbers that have been collected (but that's all so far)
+* It is also possible to display the list of accession numbers that have been collected and to remove individual items, but that's all so far.
 
 ## How does it work
 

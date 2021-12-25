@@ -1,6 +1,6 @@
 import Foundation
 
-public struct CollectionRecord {
+public struct CollectionRecord: Codable {
     public var organization: String
     public var accession_number: String
     public var created: Int64
