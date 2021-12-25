@@ -42,6 +42,16 @@ class ViewController: UIViewController {
             print("NO COLLECTION BECAUSE: \(error)")
         }
         
+        // For debugging
+        
+        if collection != nil {            
+            let org = "https://collection.sfomuseum.org"
+            let num = "2005.132.013.008"
+            let record = NewCollectionRecord(organization: org, accession_number: num)
+            self.collection?.Collect(record: record)
+            
+        }
+        
         self.setupNotificationHandlers()
         
         textRecognitionRequest = VNRecognizeTextRequest(completionHandler: { (request, error) in

@@ -12,3 +12,16 @@ public protocol Collection {
     func RecordFromOffset(offset: Int) -> Result<CollectionRecord, Error>
     func CountRecords() -> Result<Int, Error>
 }
+
+public func NewCollectionRecord(organization: String, accession_number: String) -> CollectionRecord {
+    
+    let created = Int64(NSDate().timeIntervalSince1970)
+    
+    let record = CollectionRecord(
+        organization: organization,
+        accession_number: accession_number,
+        created: created
+    )
+    
+    return record
+}
