@@ -37,6 +37,7 @@
 		4A7928A0273F286400C92087 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4A7928A2273F286400C92087 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4A7928A8273F311E00C92087 /* RecognizedTextDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizedTextDataSource.swift; sourceTree = "<group>"; };
+		4A81351B2783B36C00135587 /* www.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = www.bundle; sourceTree = "<group>"; };
 		4A8AC353274487C2002F4C7C /* sfomuseum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sfomuseum.json; sourceTree = "<group>"; };
 		4AC319D0276ACB02002F7956 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		4AD719172776288B00D3703D /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
@@ -63,6 +64,7 @@
 			isa = PBXGroup;
 			children = (
 				4A345B06274F2DC1003EF394 /* data.bundle */,
+				4A81351B2783B36C00135587 /* www.bundle */,
 				4A792893273F286100C92087 /* LableWhisperer */,
 				4A792892273F286100C92087 /* Products */,
 			);
