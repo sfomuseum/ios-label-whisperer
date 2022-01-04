@@ -1,3 +1,5 @@
+// Given a manifest URL fetch the document and then try to find the first
+// IIIF ImageAPI profile URL and display it using Leaflet.IIIF
 function label_whisperer_iiif_init(manifest_url){
 
     let req = new Request(manifest_url);
@@ -117,6 +119,7 @@ function label_whisperer_profile_url_from_services(services){
 
     for (var i=0; i < count_services; i++){
 
+	// Allow other image services
 	if (services[i]["type"] != "ImageService2"){
 	    continue;
 	}
