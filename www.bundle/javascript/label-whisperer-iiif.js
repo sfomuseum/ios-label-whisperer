@@ -3,7 +3,7 @@ function label_whisperer_iiif_init(iiif_profile){
     var map_id = "map";
     
     var map_args = {
-	center: center,
+	center: [0.0, 0.0],
 	zoom: 1,
 	crs: L.CRS.Simple,
 	minZoom: 1,
