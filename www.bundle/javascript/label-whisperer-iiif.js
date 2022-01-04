@@ -20,5 +20,5 @@ function label_whisperer_iiif_init(iiif_profile){
     	    
     var tile_layer = L.tileLayer.iiif(iiif_profile, tile_opts)
     tile_layer.addTo(map);
-    
+
 }
