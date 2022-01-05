@@ -33,6 +33,13 @@ class ScannedViewController: UIViewController {
         vc.url = url
         show(vc, sender: self)
     }
+    
+    private func showIIIFViewVC(url: URL) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "IIIFViewController") as! IIIFViewController
+        vc.manifest_url = url
+        show(vc, sender: self)
+    }
 }
 
 extension ScannedViewController: UITableViewDataSource {
@@ -136,8 +143,28 @@ extension ScannedViewController: UIContextMenuInteractionDelegate  {
             }
             
             // oEmbed action
-            
+                        
             // IIIF action
+            
+            if self.definition.iiif_manifest != nil {
+                
+                let iiif_rsp = self.definition.IIIFManifest(accession_number: accession_number)
+                
+                switch iiif_rsp {
+                case .failure(let error):
+                    print("Failed to derive IIIF manifest URL for accession number \(accession_number), \(error).")
+                    
+                case .success(let url):
+                    
+                    let openAction =
+                    UIAction(title: NSLocalizedString("Open IIIF image", comment: ""),
+                             image: UIImage(systemName: "arrow.up.square")) { action in
+                        self.showIIIFViewVC(url: url)
+                    }
+                    
+                    actions.append(openAction)
+                }
+            }
             
             if actions.count == 0 {
                 return nil
