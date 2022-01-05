@@ -347,33 +347,22 @@
             <point key="canvasLocation" x="2513" y="-325"/>
         </scene>
         <!--View Controller-->
-        <scene sceneID="LKH-XW-ZqO">
+        <scene sceneID="nZ2-0b-7VD">
             <objects>
-                <viewController storyboardIdentifier="IIIFViewController" id="cRA-nW-Zcg" customClass="IIIFViewController" customModule="LableWhisperer" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="jg3-oG-e9o">
+                <viewController storyboardIdentifier="IIIFViewController" id="mWg-Hf-cJL" customClass="IIIFViewController" customModule="LableWhisperer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5ch-pZ-s5O">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iCW-HX-fnc">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E51-2N-5Ha">
                                 <rect key="frame" x="0.0" y="818" width="414" height="44"/>
                                 <items>
-                                    <navigationItem title="IIIF" id="LPb-69-UeF">
-                                        <barButtonItem key="rightBarButtonItem" style="plain" id="tx6-Eb-Mnl">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="UVY-AU-YQG">
-                                                <rect key="frame" x="302" y="5" width="92" height="34.5"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" title="Close"/>
-                                                <connections>
-                                                    <action selector="close" destination="cRA-nW-Zcg" eventType="touchUpInside" id="Mqt-W7-7GK"/>
-                                                </connections>
-                                            </button>
-                                        </barButtonItem>
-                                    </navigationItem>
+                                    <navigationItem title="Title" id="zse-UH-8dD"/>
                                 </items>
                             </navigationBar>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FPR-uY-LDN">
+                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xJR-Ip-rJV">
                                 <rect key="frame" x="0.0" y="44" width="414" height="774"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -381,26 +370,21 @@
                                 </wkWebViewConfiguration>
                             </wkWebView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="XcV-gQ-lMt"/>
+                        <viewLayoutGuide key="safeArea" id="Rur-aj-f8J"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="FPR-uY-LDN" firstAttribute="leading" secondItem="XcV-gQ-lMt" secondAttribute="leading" id="Dr7-W5-G3l"/>
-                            <constraint firstItem="FPR-uY-LDN" firstAttribute="trailing" secondItem="XcV-gQ-lMt" secondAttribute="trailing" id="F4r-XS-ktW"/>
-                            <constraint firstItem="iCW-HX-fnc" firstAttribute="top" secondItem="FPR-uY-LDN" secondAttribute="bottom" id="F6F-Rs-uwL"/>
-                            <constraint firstItem="FPR-uY-LDN" firstAttribute="top" secondItem="XcV-gQ-lMt" secondAttribute="top" id="O3H-QK-uDB"/>
-                            <constraint firstItem="iCW-HX-fnc" firstAttribute="bottom" secondItem="XcV-gQ-lMt" secondAttribute="bottom" id="QlM-r0-lLv"/>
-                            <constraint firstItem="iCW-HX-fnc" firstAttribute="leading" secondItem="XcV-gQ-lMt" secondAttribute="leading" id="v6t-0V-OnZ"/>
-                            <constraint firstItem="iCW-HX-fnc" firstAttribute="trailing" secondItem="XcV-gQ-lMt" secondAttribute="trailing" id="xxU-N5-yx8"/>
+                            <constraint firstItem="E51-2N-5Ha" firstAttribute="leading" secondItem="Rur-aj-f8J" secondAttribute="leading" id="9O6-fd-wM9"/>
+                            <constraint firstItem="E51-2N-5Ha" firstAttribute="bottom" secondItem="Rur-aj-f8J" secondAttribute="bottom" id="Om5-8G-YKQ"/>
+                            <constraint firstItem="E51-2N-5Ha" firstAttribute="trailing" secondItem="Rur-aj-f8J" secondAttribute="trailing" id="Ryf-W4-klL"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="close_button" destination="UVY-AU-YQG" id="0Ab-6B-I9Q"/>
-                        <outlet property="web_view" destination="FPR-uY-LDN" id="U5Z-Vr-COI"/>
+                        <outlet property="web_view" destination="xJR-Ip-rJV" id="rY0-Hg-XRN"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5x8-T5-sgh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jhW-aI-avD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2511.594202898551" y="376.33928571428572"/>
+            <point key="canvasLocation" x="2379.7101449275365" y="377.67857142857139"/>
         </scene>
     </scenes>
     <resources>

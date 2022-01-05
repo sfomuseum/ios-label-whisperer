@@ -132,6 +132,17 @@ class ViewController: UIViewController {
         return .success(())
     }
     
+    private func showIIIFVC() {
+        let url = URL(string: "https://collection.sfomuseum.org/objects/1511943407/manifest/")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "IIIFViewController") as! IIIFViewController
+        vc.manifest_url = url!
+        
+        print("SHOW WITH \(url)")
+        
+        show(vc, sender: self)
+    }
+    
     private func showChooseVC() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "ChooseOrganizationViewController") as! ChooseOrganizationViewController
@@ -163,6 +174,9 @@ class ViewController: UIViewController {
     }
     
     @IBAction func scan(_ sender: UIControl) {
+        
+        showIIIFVC()
+        return
         
         let documentCameraViewController = VNDocumentCameraViewController()
         documentCameraViewController.delegate = self
