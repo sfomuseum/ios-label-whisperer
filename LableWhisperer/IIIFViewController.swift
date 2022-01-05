@@ -21,17 +21,14 @@ class IIIFViewController: UIViewController, WKNavigationDelegate, WKScriptMessag
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
-        print("HELLO")
+                        
+        let root = Bundle.main.resourcePath! + "/www.bundle/"
         
-        let data = Bundle.main.resourcePath! + "/www.bundle/"
-        let root = "file://" + data
-        
-        let root_url = URL(string: root)
-        
+        // Note the file:// -iness of the URL
+
+        let root_url = URL(string: "file://" + root)
         let iiif_url = root_url?.appendingPathComponent("iiif.html")
-        
-        print("URL \(iiif_url)")
+    
         
         let wk_conf = WKWebViewConfiguration()
         wk_conf.processPool = wk_pool
@@ -43,13 +40,11 @@ class IIIFViewController: UIViewController, WKNavigationDelegate, WKScriptMessag
         web_view.navigationDelegate = self
         view = web_view
         
-        print("LOAD REQUEST")
         web_view.load(request)
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
 
-        print("DID FINISH WEBKIT")
         let url = self.manifest_url!.absoluteString
         let init_js = "label_whisperer_iiif_init('\(url)')"
         

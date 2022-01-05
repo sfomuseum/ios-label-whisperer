@@ -137,9 +137,6 @@ class ViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "IIIFViewController") as! IIIFViewController
         vc.manifest_url = url!
-        
-        print("SHOW WITH \(url)")
-        
         show(vc, sender: self)
     }
     
@@ -175,8 +172,8 @@ class ViewController: UIViewController {
     
     @IBAction func scan(_ sender: UIControl) {
         
-        showIIIFVC()
-        return
+        //showIIIFVC()
+        //return
         
         let documentCameraViewController = VNDocumentCameraViewController()
         documentCameraViewController.delegate = self
