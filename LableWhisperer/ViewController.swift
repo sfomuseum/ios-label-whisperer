@@ -132,7 +132,7 @@ class ViewController: UIViewController {
         return .success(())
     }
     
-    private func showIIIFVC() {
+    private func showIIIFVCDebug() {
         let url = URL(string: "https://collection.sfomuseum.org/objects/1511943407/manifest/")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "IIIFViewController") as! IIIFViewController
@@ -172,7 +172,7 @@ class ViewController: UIViewController {
     
     @IBAction func scan(_ sender: UIControl) {
         
-        //showIIIFVC()
+        //showIIIFVCDebug()
         //return
         
         let documentCameraViewController = VNDocumentCameraViewController()
