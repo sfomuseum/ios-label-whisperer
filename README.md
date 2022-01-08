@@ -8,6 +8,8 @@ This is experimental work in progress. It is still just a barely modified clone 
 
 It works enough to scan and extract text from a camera source and to print that text to the screen, but that's all it does so far. There is no documentation to speak of. If you're not familiar with your way around an iOS project this may be too soon for you.
 
+For background, please consult [The Accession Numbers Project](https://millsfield.sfomuseum.org/blog/2021/12/30/accession-numbers/) blog post.
+
 ### Also
 
 This project was accidentally named `LableWhisperer` in XCode. There are a bunch of things to figure out.
@@ -22,8 +24,9 @@ Currently the application:
 * Call the `ExtractFromText` method (from the [swift-accession-numbers](https://github.com/sfomuseum/accession-numbers) package with the text results of the `VNRecognizedTextObservation` process.
 * Display a "table view" with the resulting matches.
 * When a matching accession number is selected, the application will display a contextual menu which will:
-* Allow that accession number to be "collected"
-* Try to resolve its corresponding webpage URL and, if successful, load that URL in a new view controller.
+** Allow that accession number to be "collected"
+** Try to resolve its corresponding webpage URL and, if successful, load that URL in a new view controller.
+** Try to resolve its corresponding IIIF Manifest URL and, if successful, load that URL in a new view controller which will inspect the manifest file and try to find a IIIF ImageAPI endpoint that can displayed a tiled/zoomable view of that object. _Note: This view controller has no error reporting or feedback at this time so you'll need to work with Safari's developer to debug errors._
 * It is also possible to display the list of accession numbers that have been collected and to remove individual items, but that's all so far.
 
 ## How does it work
@@ -94,13 +97,7 @@ For background have a look at the 2014 blog post [Label Whisperer](https://labs.
 
 ## Examples
 
-![](docs/images/label-whisperer-launch.png)
-
-![](docs/images/label-whisperer-choose-org.png)
-
-![](docs/images/label-whisperer-selected-sfom.png)
-
-![](docs/images/label-whisperer-selected-bm.png)
+[The Accession Numbers Project](https://millsfield.sfomuseum.org/blog/2021/12/30/accession-numbers/) blog post contains a short video demonstrating how the application works.
 
 ## See also
 
