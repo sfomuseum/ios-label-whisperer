@@ -24,9 +24,9 @@ Currently the application:
 * Call the `ExtractFromText` method (from the [swift-accession-numbers](https://github.com/sfomuseum/accession-numbers) package with the text results of the `VNRecognizedTextObservation` process.
 * Display a "table view" with the resulting matches.
 * When a matching accession number is selected, the application will display a contextual menu which will:
-** Allow that accession number to be "collected"
-** Try to resolve its corresponding webpage URL and, if successful, load that URL in a new view controller.
-** Try to resolve its corresponding IIIF Manifest URL and, if successful, load that URL in a new view controller which will inspect the manifest file and try to find a IIIF ImageAPI endpoint that can displayed a tiled/zoomable view of that object. _Note: This view controller has no error reporting or feedback at this time so you'll need to work with Safari's developer to debug errors._
+* Allow that accession number to be "collected"
+* Try to resolve its corresponding webpage URL and, if successful, load that URL in a new view controller.
+* Try to resolve its corresponding IIIF Manifest URL and, if successful, load that URL in a new view controller which will inspect the manifest file and try to find a IIIF ImageAPI endpoint that can displayed a tiled/zoomable view of that object. _Note: This view controller has no error reporting or feedback at this time so you'll need to work with Safari's developer to debug errors._
 * It is also possible to display the list of accession numbers that have been collected and to remove individual items, but that's all so far.
 
 ## How does it work
