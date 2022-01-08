@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4A345B07274F2DC1003EF394 /* data.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4A345B06274F2DC1003EF394 /* data.bundle */; };
+		4A61DF7727890D76008F4D80 /* www.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4A61DF7627890D76008F4D80 /* www.bundle */; };
 		4A792895273F286100C92087 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A792894273F286100C92087 /* AppDelegate.swift */; };
 		4A792897273F286100C92087 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A792896273F286100C92087 /* SceneDelegate.swift */; };
 		4A792899273F286100C92087 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A792898273F286100C92087 /* ViewController.swift */; };
@@ -17,7 +18,6 @@
 		4A7928A9273F311E00C92087 /* RecognizedTextDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7928A8273F311E00C92087 /* RecognizedTextDataSource.swift */; };
 		4A8AC352274484F9002F4C7C /* AccessionNumbers in Frameworks */ = {isa = PBXBuildFile; productRef = 4A8AC351274484F9002F4C7C /* AccessionNumbers */; };
 		4A8AC354274487C2002F4C7C /* sfomuseum.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A8AC353274487C2002F4C7C /* sfomuseum.json */; };
-		4A9AFD6E27864C0F0079AEDE /* www.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4A9AFD6D27864C0F0079AEDE /* www.bundle */; };
 		4ABF86102786345D00C44270 /* IIIFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ABF860F2786345D00C44270 /* IIIFViewController.swift */; };
 		4AC319D1276ACB02002F7956 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC319D0276ACB02002F7956 /* WebViewController.swift */; };
 		4AD719182776288B00D3703D /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD719172776288B00D3703D /* Collection.swift */; };
@@ -30,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		4A345B06274F2DC1003EF394 /* data.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = data.bundle; sourceTree = "<group>"; };
+		4A61DF7627890D76008F4D80 /* www.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = www.bundle; sourceTree = "<group>"; };
 		4A792891273F286100C92087 /* LableWhisperer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LableWhisperer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A792894273F286100C92087 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A792896273F286100C92087 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -40,7 +41,6 @@
 		4A7928A2273F286400C92087 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4A7928A8273F311E00C92087 /* RecognizedTextDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizedTextDataSource.swift; sourceTree = "<group>"; };
 		4A8AC353274487C2002F4C7C /* sfomuseum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sfomuseum.json; sourceTree = "<group>"; };
-		4A9AFD6D27864C0F0079AEDE /* www.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = www.bundle; path = ../../../../Users/asc/Desktop/www.bundle; sourceTree = "<group>"; };
 		4ABF860F2786345D00C44270 /* IIIFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IIIFViewController.swift; sourceTree = "<group>"; };
 		4AC319D0276ACB02002F7956 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		4AD719172776288B00D3703D /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
@@ -66,7 +66,7 @@
 		4A792888273F286100C92087 = {
 			isa = PBXGroup;
 			children = (
-				4A9AFD6D27864C0F0079AEDE /* www.bundle */,
+				4A61DF7627890D76008F4D80 /* www.bundle */,
 				4A345B06274F2DC1003EF394 /* data.bundle */,
 				4A792893273F286100C92087 /* LableWhisperer */,
 				4A792892273F286100C92087 /* Products */,
@@ -171,7 +171,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A7928A1273F286400C92087 /* LaunchScreen.storyboard in Resources */,
-				4A9AFD6E27864C0F0079AEDE /* www.bundle in Resources */,
+				4A61DF7727890D76008F4D80 /* www.bundle in Resources */,
 				4A79289E273F286400C92087 /* Assets.xcassets in Resources */,
 				4A8AC354274487C2002F4C7C /* sfomuseum.json in Resources */,
 				4A79289C273F286100C92087 /* Main.storyboard in Resources */,

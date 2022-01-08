@@ -2,19 +2,22 @@
 // IIIF ImageAPI profile URL and display it using Leaflet.IIIF
 function label_whisperer_iiif_init(manifest_url){
 
+    console.log("FETCH", manifest_url);
     let req = new Request(manifest_url);
 
     fetch(req)
 	.then(function(rsp) {
-
+        
 	    if (!rsp.ok) {
-		throw new Error(`HTTP error! status: ${rsp.status}`);
+            console.log("ERROR", rsp);
+            throw new Error(`HTTP error! status: ${rsp.status}`);
 	    }
 	    
 	    return rsp.blob();
 	})
 	.then(function(rsp) {
 
+        console.log("IIIF RESPONSE");
 	    let reader = new FileReader();
 
 	    reader.onload = function() {
@@ -23,6 +26,8 @@ function label_whisperer_iiif_init(manifest_url){
 		
 		var profile_url = label_whisperer_profile_url_from_manifest(data);
 		
+            console.log("SHOW", profile_url);
+            
 		if (profile_url){
 		    label_whisperer_iiif_show_tiles(profile_url);
 		}
@@ -52,6 +57,7 @@ function label_whisperer_profile_url_from_manifest(data){
 	}
     }
 
+    console.log("label_whisperer_profile_url_from_manifest", profile_url);
     return profile_url;
 }
 
@@ -75,6 +81,7 @@ function label_whisperer_profile_url_from_canvas(data){
 	}
     }
 
+    console.log("label_whisperer_profile_url_from_canvas", profile_url);
     return profile_url;    
 }
 
@@ -108,6 +115,8 @@ function label_whisperer_profile_url_from_annotation(data){
 	}
     }
 
+    console.log("label_whisperer_profile_url_from_annotation", profile_url);
+    
     return profile_url;    
 }
 
@@ -128,6 +137,7 @@ function label_whisperer_profile_url_from_services(services){
 	break;
     }
 
+    console.log("label_whisperer_profile_url_from_services", profile_url);
     return profile_url;        
 }
 
