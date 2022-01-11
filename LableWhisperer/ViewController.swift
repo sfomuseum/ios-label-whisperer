@@ -72,6 +72,16 @@ class ViewController: UIViewController {
         textRecognitionRequest.usesLanguageCorrection = true
         
         self.scan_button.isEnabled = false
+        
+        print("WUB")
+        let def = UserDefaults.standard.string(forKey: "current_defintion")
+        print("DEF IS \(def)")
+        
+        if def != nil {
+
+            // self.current = def!
+            // self.showDefinition(definition: def!)
+        }
     }
     
     // MARK: - Alert Methods
@@ -97,6 +107,25 @@ class ViewController: UIViewController {
         }
     }
     
+    private func showDefinition(definition: Definition) {
+        
+        self.current_organization.title = definition.organization_name
+                
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .prettyPrinted
+        
+        do {
+            let data = try encoder.encode(definition)
+            self.current_definition.text = String(data: data, encoding: .utf8)!
+            
+        } catch (let error){
+            print("SAD \(error)")
+            return
+        }
+        
+        self.scan_button.isEnabled = true
+    }
+    
     private func setupNotificationHandlers() -> Result<Void, Error> {
         
         NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: "setCurrentOrganization"),
@@ -110,23 +139,13 @@ class ViewController: UIViewController {
             
             self.current = def
             
-            // TO DO: save to user prefs
+            print("SET", def.organization_name)
+            UserDefaults.standard.set(def.organization_name, forKey:"current_definition")
+            self.showDefinition(definition: def)
             
-            self.current_organization.title = self.current!.organization_name
+            let def2 = UserDefaults.standard.string(forKey: "current_defintion")
+            print("WHAT", def2)
             
-            self.scan_button.isEnabled = true
-            
-            let encoder = JSONEncoder()
-            encoder.outputFormatting = .prettyPrinted
-            
-            do {
-                let data = try encoder.encode(self.current!)
-                
-                self.current_definition.text = String(data: data, encoding: .utf8)!
-                
-            } catch (let error){
-                print("SAD \(error)")
-            }
         }
         
         return .success(())
