@@ -6,14 +6,24 @@
 //
 
 import UIKit
+import AccessionNumbers
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    var definition_files: DefinitionFiles!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        do {
+            let d = try DefinitionFiles()
+            definition_files = d
+        } catch (let error) {
+            print("Failed to create definition files \(error)")
+            return false
+        }
+        
         return true
     }
 

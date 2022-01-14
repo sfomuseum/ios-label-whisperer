@@ -3,6 +3,7 @@ import AccessionNumbers
 
 class ChooseOrganizationViewController: UIViewController {
     
+    let app = UIApplication.shared.delegate as! AppDelegate
     var definitions = [Definition]()
     
     @IBOutlet var choose_button: UIButton!
@@ -18,7 +19,7 @@ class ChooseOrganizationViewController: UIViewController {
         
         if definitions.count == 0 {
                     
-            let def_rsp = self.loadDefinitionFiles()
+            let def_rsp = app.definition_files.Load()
         
             switch def_rsp {
             case .failure(let error):
@@ -39,77 +40,6 @@ class ChooseOrganizationViewController: UIViewController {
         dismiss(animated: true)
     }
     
-    // MARK: - Definitions methods
-    
-    private func listDefinitionFiles() -> Result<[URL], Error> {
-        
-        let data = Bundle.main.resourcePath! + "/data.bundle/"
-        let root = URL(string: data)
-        
-        var directoryContents: [URL]
-        
-        do {
-            directoryContents = try FileManager.default.contentsOfDirectory(at: root!, includingPropertiesForKeys: nil)
-        } catch (let error) {
-            return .failure(error)
-        }
-        
-        let definitions = directoryContents.filter({ $0.pathExtension == "json" })
-        return .success(definitions)
-    }
-    
-    private func loadDefinitionFiles() -> Result<[Definition], Error> {
-        
-        var definitions = [Definition]()
-        var urls: [URL]
-        
-        let list_rsp = self.listDefinitionFiles()
-                
-        switch list_rsp {
-        case .failure(let error):
-            return .failure(error)
-        case .success(let results):
-            urls = results
-        }
-        
-        // TO DO: This, but asynchronously
-        
-        for u in urls {
-            
-            let def_rsp = self.loadDefinitionFromURL(url: u)
-            
-            switch def_rsp {
-            case .failure(let error):
-                return .failure(error)
-            case .success(let def):
-                definitions.append(def)
-            }
-        }
-        
-        return .success(definitions)
-    }
-    
-    private func loadDefinitionFromURL(url: URL) -> Result<Definition, Error> {
-             
-        var data: Data
-        var def: Definition
-        
-        do {
-            data = try Data(contentsOf: url)
-        } catch (let error){
-            return .failure(error)
-        }
-        
-        let decoder = JSONDecoder()
-        
-        do {
-            def = try decoder.decode(Definition.self, from: data)
-        } catch (let error){
-            return .failure(error)
-        }
-        
-        return .success(def)
-    }
 }
 
 extension ChooseOrganizationViewController: UITableViewDataSource {

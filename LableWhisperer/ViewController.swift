@@ -15,6 +15,8 @@ import AccessionNumbers
 
 class ViewController: UIViewController {
     
+    let app = UIApplication.shared.delegate as! AppDelegate
+    
     @IBOutlet var scanned_text: UITextView!
     
     @IBOutlet var scan_button: UIButton!
