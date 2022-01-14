@@ -10,11 +10,13 @@ import AccessionNumbers
 
 public enum DefinitionFilesErrors: Error {
     case invalidRoot
+    case notFound
 }
 
 public class DefinitionFiles {
     
     var root: URL
+    var url_map: [String: URL] = [:]
     
     public init() throws {
         
@@ -25,6 +27,32 @@ public class DefinitionFiles {
         }
         
         root = url
+        
+        //
+        
+        var urls: [URL]
+        
+        let list_rsp = self.List()
+        
+        switch list_rsp {
+        case .failure(let error):
+            throw error
+        case .success(let results):
+            urls = results
+        }
+                
+        for u in urls {
+            
+            let def_rsp = self.LoadFromURL(url: u)
+            
+            switch def_rsp {
+            case .failure(let error):
+                throw error
+            case .success(let def):
+                url_map[ def.organization_url ] = u
+            }
+        }
+        
     }
     
     public func List() -> Result<[URL], Error> {                
@@ -44,20 +72,10 @@ public class DefinitionFiles {
     public func Load() -> Result<[Definition], Error> {
         
         var definitions = [Definition]()
-        var urls: [URL]
+
+        // Remember url_map is built during the initializer
         
-        let list_rsp = self.List()
-        
-        switch list_rsp {
-        case .failure(let error):
-            return .failure(error)
-        case .success(let results):
-            urls = results
-        }
-        
-        // TO DO: This, but asynchronously
-        
-        for u in urls {
+        for (_, u) in self.url_map {
             
             let def_rsp = self.LoadFromURL(url: u)
             
@@ -70,6 +88,15 @@ public class DefinitionFiles {
         }
         
         return .success(definitions)
+    }
+    
+    public func LoadFromOrganizationURL(organization_url: String) -> Result<Definition, Error> {
+
+        guard let definition_url = self.url_map[organization_url] else {
+            return .failure(DefinitionFilesErrors.notFound)
+        }
+        
+        return self.LoadFromURL(url: definition_url)
     }
     
     public func LoadFromURL(url: URL) -> Result<Definition, Error> {

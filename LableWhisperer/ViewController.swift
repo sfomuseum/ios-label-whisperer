@@ -74,15 +74,22 @@ class ViewController: UIViewController {
         textRecognitionRequest.usesLanguageCorrection = true
         
         self.scan_button.isEnabled = false
-        
-        print("WUB")
-        let def = UserDefaults.standard.string(forKey: "current_defintion")
-        print("DEF IS \(def)")
-        
-        if def != nil {
 
-            // self.current = def!
-            // self.showDefinition(definition: def!)
+        // Preload last selected definition
+        
+        let current = UserDefaults.standard.value(forKey: "current_definition") as? String
+        
+        if current != nil {
+
+            let def_rsp = app.definition_files.LoadFromOrganizationURL(organization_url: current!)
+            
+            switch def_rsp {
+            case .failure(let error):
+                print("Failed to load definition file for \(current), \(error)")
+            case .success(let def):
+                self.current = def
+                self.showDefinition(definition: def)
+            }
         }
     }
     
@@ -141,13 +148,19 @@ class ViewController: UIViewController {
             
             self.current = def
             
-            print("SET", def.organization_name)
-            UserDefaults.standard.set(def.organization_name, forKey:"current_definition")
+            UserDefaults.standard.setValue(def.organization_url, forKey:"current_definition")
+            let sync = UserDefaults.standard.synchronize()
+            
+            if !sync {
+                print("Failed to synchronize user defaults")
+            }
+            
             self.showDefinition(definition: def)
-            
-            let def2 = UserDefaults.standard.string(forKey: "current_defintion")
+    
+            /*
+            let def2 = UserDefaults.standard.value(forKey: "current_definition") as? String
             print("WHAT", def2)
-            
+            */
         }
         
         return .success(())
