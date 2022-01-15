@@ -27,6 +27,7 @@
 		4AD7191F277635DF00D3703D /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD7191E277635DF00D3703D /* CollectionViewController.swift */; };
 		4ADFE4DB2774B670006F35F9 /* ChooseOrganizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADFE4DA2774B670006F35F9 /* ChooseOrganizationViewController.swift */; };
 		4ADFE4DD2774CBF4006F35F9 /* ScannedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADFE4DC2774CBF4006F35F9 /* ScannedViewController.swift */; };
+		4AE7A1F42792578E00057045 /* OEmbedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE7A1F32792578E00057045 /* OEmbedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		4AD7191E277635DF00D3703D /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		4ADFE4DA2774B670006F35F9 /* ChooseOrganizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseOrganizationViewController.swift; sourceTree = "<group>"; };
 		4ADFE4DC2774CBF4006F35F9 /* ScannedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannedViewController.swift; sourceTree = "<group>"; };
+		4AE7A1F32792578E00057045 /* OEmbedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OEmbedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 				4A792898273F286100C92087 /* ViewController.swift */,
 				4AC319D0276ACB02002F7956 /* WebViewController.swift */,
 				4ABF860F2786345D00C44270 /* IIIFViewController.swift */,
+				4AE7A1F32792578E00057045 /* OEmbedViewController.swift */,
 				4A7928A8273F311E00C92087 /* RecognizedTextDataSource.swift */,
 				4A79289A273F286100C92087 /* Main.storyboard */,
 				4A79289D273F286400C92087 /* Assets.xcassets */,
@@ -190,6 +193,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A792899273F286100C92087 /* ViewController.swift in Sources */,
+				4AE7A1F42792578E00057045 /* OEmbedViewController.swift in Sources */,
 				4ADFE4DB2774B670006F35F9 /* ChooseOrganizationViewController.swift in Sources */,
 				4A792895273F286100C92087 /* AppDelegate.swift in Sources */,
 				4ABF86102786345D00C44270 /* IIIFViewController.swift in Sources */,

@@ -357,7 +357,7 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E51-2N-5Ha">
                                 <rect key="frame" x="0.0" y="818" width="414" height="44"/>
                                 <items>
-                                    <navigationItem title="Title" id="zse-UH-8dD"/>
+                                    <navigationItem title="IIIF" id="zse-UH-8dD"/>
                                 </items>
                             </navigationBar>
                             <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xJR-Ip-rJV">
@@ -385,6 +385,49 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jhW-aI-avD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2379.7101449275365" y="377.67857142857139"/>
+        </scene>
+        <!--Embed View Controller-->
+        <scene sceneID="wVJ-lt-3K6">
+            <objects>
+                <viewController storyboardIdentifier="OEmbedViewController" id="ApY-Ws-Vin" customClass="OEmbedViewController" customModule="LableWhisperer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IR7-h4-3VW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lZ1-6r-fMH">
+                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
+                                <items>
+                                    <navigationItem title="oEmbed" id="92O-ei-DrQ"/>
+                                </items>
+                            </navigationBar>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rcy-LL-zoo">
+                                <rect key="frame" x="0.0" y="44" width="414" height="774"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="4Wu-Ve-m3b"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Rcy-LL-zoo" firstAttribute="leading" secondItem="IR7-h4-3VW" secondAttribute="leading" id="3UQ-l5-sK4"/>
+                            <constraint firstItem="lZ1-6r-fMH" firstAttribute="top" secondItem="Rcy-LL-zoo" secondAttribute="bottom" id="4FO-de-I6L"/>
+                            <constraint firstItem="lZ1-6r-fMH" firstAttribute="leading" secondItem="4Wu-Ve-m3b" secondAttribute="leading" id="5jF-BT-s1f"/>
+                            <constraint firstItem="lZ1-6r-fMH" firstAttribute="trailing" secondItem="4Wu-Ve-m3b" secondAttribute="trailing" id="Kkb-py-mOb"/>
+                            <constraint firstAttribute="trailing" secondItem="Rcy-LL-zoo" secondAttribute="trailing" id="SPY-Sy-o7Z"/>
+                            <constraint firstItem="lZ1-6r-fMH" firstAttribute="bottom" secondItem="4Wu-Ve-m3b" secondAttribute="bottom" id="h3K-3F-Pon"/>
+                            <constraint firstItem="Rcy-LL-zoo" firstAttribute="top" secondItem="4Wu-Ve-m3b" secondAttribute="top" id="uRC-Cx-BrU"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="web_view" destination="Rcy-LL-zoo" id="I29-zO-i2s"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4zU-1Q-irB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3086.9565217391305" y="377.67857142857139"/>
         </scene>
     </scenes>
     <resources>
