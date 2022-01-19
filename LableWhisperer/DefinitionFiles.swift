@@ -10,6 +10,7 @@ import AccessionNumbers
 
 public enum DefinitionFilesErrors: Error {
     case invalidRoot
+    case invalidURL
     case notFound
 }
 
@@ -17,6 +18,8 @@ public class DefinitionFiles {
     
     var root: URL
     var url_map: [String: URL] = [:]
+    
+    let github_data = "https://raw.githubusercontent.com/sfomuseum/accession-numbers/main/data/"
     
     public init() throws {
         
@@ -53,6 +56,90 @@ public class DefinitionFiles {
             }
         }
         
+        print("FETCH INDEX")
+        self.FetchIndex()
+    }
+    
+    public func FetchIndex() -> Result<Bool, Error> {
+        
+        guard let url = URL(string: github_data + "index.txt") else {
+            return .failure(DefinitionFilesErrors.invalidURL)
+        }
+        
+        var req = URLRequest(url: url)
+        req.httpMethod = "GET"
+        req.timeoutInterval = TimeInterval(10)
+                
+        let task = URLSession.shared.dataTask(with: req) { [self] data, response, error in
+            
+            guard let rsp = response as? HTTPURLResponse else {
+                print("WHAT")
+                return
+            }
+            
+            if error != nil {
+                print(error)
+                return
+            }
+            
+            guard (200) ~= rsp.statusCode else {
+                print(rsp.statusCode)
+                return
+            }
+            
+            if data == nil {
+                return
+            }
+            
+            let str_data = String(decoding: data!, as: UTF8.self)
+            let filenames = str_data.split(separator: "\n")
+            
+            for f in filenames {
+                self.RefreshDataFile(filename: String(f))
+            }
+    
+        }
+        
+        task.resume()
+        return .success(true)
+    }
+    
+    public func RefreshDataFile(filename: String) -> Result<Bool, Error> {
+        
+        guard let url = URL(string: github_data + filename) else {
+            return .failure(DefinitionFilesErrors.invalidURL)
+        }
+        
+        var req = URLRequest(url: url)
+        req.httpMethod = "GET"
+        req.timeoutInterval = TimeInterval(10)
+                
+        let task = URLSession.shared.dataTask(with: req) { [self] data, response, error in
+            
+            guard let rsp = response as? HTTPURLResponse else {
+                print("WHAT")
+                return
+            }
+            
+            if error != nil {
+                print(error)
+                return
+            }
+            
+            guard (200) ~= rsp.statusCode else {
+                print(rsp.statusCode)
+                return
+            }
+            
+            if data == nil {
+                return
+            }
+            
+            print("WRITE DATA \(filename)")
+        }
+        
+        task.resume()
+        return .success(true)
     }
     
     public func List() -> Result<[URL], Error> {                
