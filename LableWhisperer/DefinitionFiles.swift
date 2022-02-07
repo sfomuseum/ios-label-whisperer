@@ -47,13 +47,31 @@ public class DefinitionFiles {
             ()
         }
         
+        if app.network_available {
+            self.FetchIndex()
+        }
+        
+        let map_rsp = self.setupURLMap()
+        
+        switch map_rsp {
+        case .failure(let error):
+            throw error
+        case .success:
+            ()
+        }
+        
+        
+    }
+    
+    private func setupURLMap() -> Result<Bool, Error> {
+        
         var urls: [URL]
         
         let list_rsp = self.List(root: self.user_root)
         
         switch list_rsp {
         case .failure(let error):
-            throw error
+            return.failure(error)
         case .success(let results):
             urls = results
         }
@@ -64,15 +82,13 @@ public class DefinitionFiles {
             
             switch def_rsp {
             case .failure(let error):
-                throw error
+                return .failure(error)
             case .success(let def):
                 url_map[ def.organization_url ] = u
             }
         }
-            
-        if app.network_available {
-            self.FetchIndex()
-        }
+        
+        return .success(true)
     }
     
     private func setupUserDefinitionFiles() -> Result<Bool, Error> {
@@ -94,6 +110,8 @@ public class DefinitionFiles {
             let local_u = self.user_root.appendingPathComponent(fname)
             
             let local_path = local_u.absoluteString.replacingOccurrences(of: "file://", with: "")
+            
+            // print(local_path)
             
             if (fm.fileExists(atPath: local_path)){
                 // print("SKIP \(fname)")
@@ -126,7 +144,7 @@ public class DefinitionFiles {
     
     public func FetchIndex() -> Result<Bool, Error> {
         
-        if app.network_available {
+        if !app.network_available {
             return .failure(DefinitionFilesErrors.networkUnavailable)
         }
         
@@ -156,6 +174,7 @@ public class DefinitionFiles {
             }
             
             if data == nil {
+                print("NO DATA")
                 return
             }
             
@@ -182,7 +201,7 @@ public class DefinitionFiles {
     
     public func RefreshDataFile(filename: String) -> Result<Bool, Error> {
         
-        if app.network_available {
+        if !app.network_available {
             return .failure(DefinitionFilesErrors.networkUnavailable)
         }
         
@@ -221,7 +240,12 @@ public class DefinitionFiles {
             let remote_hashed = SHA256.hash(data: data!)
             var write_data = false
             
-            if (fm.fileExists(atPath: user_url.absoluteString)) {
+            // It's very confusing keeping track of which methods need a URI scheme
+            // and which don't...
+            
+            let path_exists = user_url.absoluteString.replacingOccurrences(of: "file://", with: "")
+            
+            if (fm.fileExists(atPath: path_exists)) {
                 
                 let data_rsp = ReadFromURL(url: user_url)
                 
@@ -233,12 +257,15 @@ public class DefinitionFiles {
                     
                     let local_hashed = SHA256.hash(data: local_data)
                     
+                    // print("HASHES \(filename) LOCAL \(local_hashed) REMOTE \(remote_hashed)")
+                    
                     if local_hashed != remote_hashed {
                         write_data = true
                     }
                 }
                 
             } else {
+                // print("NO FILE \(user_url.absoluteString)")
                 write_data = true
             }
             
@@ -246,7 +273,7 @@ public class DefinitionFiles {
                 return
             }
             
-            print("REFRESH DATA \(filename)")
+            // print("REFRESH DATA \(filename) -> \(user_url)")
             
             do {
                 try data!.write(to: user_url)
@@ -254,6 +281,7 @@ public class DefinitionFiles {
                 print("SAD WRITE \(error)")
             }
             
+            print("WROTE \(user_url.absoluteString)")
         }
         
         task.resume()
