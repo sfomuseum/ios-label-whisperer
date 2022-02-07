@@ -18,7 +18,7 @@ This project was accidentally named `LableWhisperer` in XCode. There are a bunch
 
 Currently the application:
 
-* Loads all the "definition" files in [data.bundle](data.bundle) at launch.
+* Loads all the "definition" files derived from bundled, local and remote sources.
 * Display a `Choose` button which displays a "table view" for selecting a specific institution and it's rules for extracting accession numbers from text.
 * Display a `Scan` button which launches a `VNRecognizedTextObservation` process.
 * Call the `ExtractFromText` method (from the [swift-accession-numbers](https://github.com/sfomuseum/accession-numbers) package with the text results of the `VNRecognizedTextObservation` process.
@@ -31,11 +31,23 @@ Currently the application:
 
 ## How does it work
 
-* At start up the application loads one or more accession number "definition" files. These are the JSON files in the `data` directory of the [accession-numbers](https://github.com/sfomuseum/accession-numbers) repository. These are used to populate a "table view" to choose a specific institution whose accession numbers are being scanned. This view is presented when a user presses the "Choose" button.
+### Loading definition files
 
-* There is a second button, labeled "Scanned" that invoke iOS's text recognition workflow for scanning a wall label, or other text containing accession numbers.
+At start up the application loads one or more accession number "definition" files. There are three sources from definition files:
 
-* Once scanned the application uses the resultant `VNRecognizedTextObservation` instance to build a text string which is then passed to the `ExtractFromText` method (defined in the [swift-accession-numbers](https://github.com/sfomuseum/swift-accession-numbers) package). For example: 
+* Definition files found in the [accession-numbers/data](https://github.com/sfomuseum/accession-numbers/) repository.
+* Definition files that are bundled with the application itself
+* Defintion files local to the user. These files are cloned from bundled application source and, if the internet is available, supplemented or updated by files in the GitHub repository. In this way the application can better stay up to date with changes and improvements to the source data in the `accession-numbers` project.
+
+These are the JSON files in the `data` directory of the [accession-numbers](https://github.com/sfomuseum/accession-numbers) repository.
+
+These definition files are used to populate a "table view" to choose a specific institution whose accession numbers are being scanned. This view is presented when a user presses the "Choose" button.
+
+### Scanning wall labels
+
+There is a second button, labeled "Scanned" that invoke iOS's text recognition workflow for scanning a wall label, or other text containing accession numbers.
+
+Once scanned the application uses the resultant `VNRecognizedTextObservation` instance to build a text string which is then passed to the `ExtractFromText` method (defined in the [swift-accession-numbers](https://github.com/sfomuseum/swift-accession-numbers) package). For example: 
 
 ```
     func addRecognizedText(recognizedText: [VNRecognizedTextObservation]) {
@@ -65,9 +77,15 @@ Currently the application:
     }
 ```
 
-* The accession numbers that were able to be extracted from the text derived from the photograph are then displayed in a separate table view.
+### Once scanned
 
-* That's it so far.
+The accession numbers that were able to be extracted from the text derived from the photograph are then displayed in a separate table view.
+
+This table view offers the following contextual actions, depending on how the selected institution's definition file is configured.
+
+* Save the selected accession number to a local "collection". This is available for all institutions.
+* Open the selected accession number's corresponding web page. This depends on the selected institution's definition file having a `object_url` property.
+* Open the selected accession number's corresponding IIIF manifest to show a "zoomable" image of the object. This depends on the selected institution's definition file having a `iiif_manifest` property.
 
 ## Next steps
 
