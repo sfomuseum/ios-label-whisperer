@@ -16,6 +16,7 @@
 		4A79289E273F286400C92087 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A79289D273F286400C92087 /* Assets.xcassets */; };
 		4A7928A1273F286400C92087 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A79289F273F286400C92087 /* LaunchScreen.storyboard */; };
 		4A7928A9273F311E00C92087 /* RecognizedTextDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7928A8273F311E00C92087 /* RecognizedTextDataSource.swift */; };
+		4A840C3B27BAE6CD0080BCB3 /* TextEmboss in Frameworks */ = {isa = PBXBuildFile; productRef = 4A840C3A27BAE6CD0080BCB3 /* TextEmboss */; };
 		4A8AC352274484F9002F4C7C /* AccessionNumbers in Frameworks */ = {isa = PBXBuildFile; productRef = 4A8AC351274484F9002F4C7C /* AccessionNumbers */; };
 		4A8AC354274487C2002F4C7C /* sfomuseum.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A8AC353274487C2002F4C7C /* sfomuseum.json */; };
 		4AB3A89B278D15A1004B2750 /* DefinitionFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB3A89A278D15A1004B2750 /* DefinitionFiles.swift */; };
@@ -59,6 +60,7 @@
 			files = (
 				4A8AC352274484F9002F4C7C /* AccessionNumbers in Frameworks */,
 				4AD7191D27762A8F00D3703D /* FMDB in Frameworks */,
+				4A840C3B27BAE6CD0080BCB3 /* TextEmboss in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,6 +128,7 @@
 			packageProductDependencies = (
 				4A8AC351274484F9002F4C7C /* AccessionNumbers */,
 				4AD7191C27762A8F00D3703D /* FMDB */,
+				4A840C3A27BAE6CD0080BCB3 /* TextEmboss */,
 			);
 			productName = LableWhisperer;
 			productReference = 4A792891273F286100C92087 /* LableWhisperer.app */;
@@ -158,6 +161,7 @@
 			packageReferences = (
 				4A8AC350274484F9002F4C7C /* XCRemoteSwiftPackageReference "swift-accession-numbers" */,
 				4AD7191B27762A8E00D3703D /* XCRemoteSwiftPackageReference "fmdb" */,
+				4A840C3927BAE6CD0080BCB3 /* XCRemoteSwiftPackageReference "swift-text-emboss" */,
 			);
 			productRefGroup = 4A792892273F286100C92087 /* Products */;
 			projectDirPath = "";
@@ -422,6 +426,15 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		4A840C3927BAE6CD0080BCB3 /* XCRemoteSwiftPackageReference "swift-text-emboss" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sfomuseum/swift-text-emboss";
+			requirement = {
+				kind = versionRange;
+				maximumVersion = 1.0.0;
+				minimumVersion = 0.0.1;
+			};
+		};
 		4A8AC350274484F9002F4C7C /* XCRemoteSwiftPackageReference "swift-accession-numbers" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sfomuseum/swift-accession-numbers";
@@ -441,6 +454,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		4A840C3A27BAE6CD0080BCB3 /* TextEmboss */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A840C3927BAE6CD0080BCB3 /* XCRemoteSwiftPackageReference "swift-text-emboss" */;
+			productName = TextEmboss;
+		};
 		4A8AC351274484F9002F4C7C /* AccessionNumbers */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4A8AC350274484F9002F4C7C /* XCRemoteSwiftPackageReference "swift-accession-numbers" */;

@@ -38,6 +38,15 @@
         }
       },
       {
+        "package": "TextEmboss",
+        "repositoryURL": "https://github.com/sfomuseum/swift-text-emboss",
+        "state": {
+          "branch": null,
+          "revision": "ea588c67c5fa0c998d55c3b2fdaa20825700c85b",
+          "version": "0.0.1"
+        }
+      },
+      {
         "package": "URITemplate",
         "repositoryURL": "https://github.com/kylef/URITemplate.swift",
         "state": {
